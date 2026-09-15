@@ -45,6 +45,7 @@ h1 { font-family: var(--serif); font-size: 44px; letter-spacing: 6px; margin: 20
 .sec h2 { font-family: var(--serif); text-align: center; font-size: 26px; color: var(--primary); margin-bottom: 8px; }
 .sec .sub { text-align: center; color: var(--text-2); font-size: 14px; margin-bottom: 28px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }  /* 固定 2×2：桌面两列、手机一列 */
 .card {
   background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
 }
@@ -107,10 +108,10 @@ footer a { color: var(--primary); }
 
   <div class="sec">
     <h2>为什么可信</h2>
-    <div class="grid">
+    <div class="grid grid-2">
       <div class="card"><span class="ic">🧪</span><h3>自动化评测体系</h3><p>自研金标评测：20 单题 + 3 组追问 + 2 拒答题，引用溯源/要点覆盖/拒答三关自动评分，每次改动跑回归对比，防止能力退化。</p></div>
-      <div class="card"><span class="ic">🔬</span><h3>为药学场景定制</h3><p>内置 QC 检验知识库开箱即用（药典通则 10 大类语料），面向化工药学大学生的真实课程需求设计。</p></div>
       <div class="card"><span class="ic">🔒</span><h3>数据留在本机</h3><p>所有文档、索引、对话历史保存在自己电脑；仅在问答/识别时把必要片段发送给大模型 API。</p></div>
+      <div class="card"><span class="ic">🔬</span><h3>为药学场景定制</h3><p>内置 QC 检验知识库开箱即用（药典通则 10 大类语料），面向化工药学大学生的真实课程需求设计。</p></div>
       <div class="card"><span class="ic">🌐</span><h3>开源透明</h3><p>MIT 许可开源，代码可审查；桌面 APP 跨平台（Windows 已发布，macOS 规划中）。</p></div>
     </div>
   </div>
