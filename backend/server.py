@@ -2,6 +2,7 @@
 """Flask 后端：静态前端 + /api 路由（薄壳，逻辑都在 backend 各模块）。"""
 import json
 import os
+import time
 
 import flask
 from flask import Flask, Response, jsonify, request
@@ -445,6 +446,20 @@ def create_app():
         fname = kb_mod.save_text_doc(kb_id, name, text)
         kb_mod.start_ingest(kb_id, load_settings())
         return jsonify({"ok": True, "file": fname})
+
+    # ---- 意见反馈（产品化：真实用户反馈闭环） ----
+    @app.post("/api/feedback")
+    def save_feedback():
+        """意见反馈：追加保存到数据目录 feedback.txt（本机存档，便于用户转交开发者）。"""
+        data = request.get_json(force=True) or {}
+        content = (data.get("content") or "").strip()
+        if not content:
+            return jsonify({"ok": False, "error": "反馈内容为空"}), 400
+        path = os.path.join(config.DATA_DIR, "feedback.txt")
+        os.makedirs(config.DATA_DIR, exist_ok=True)
+        with open(path, "a", encoding="utf-8") as f:
+            f.write("\n===== " + time.strftime("%Y-%m-%d %H:%M") + " =====\n" + content + "\n")
+        return jsonify({"ok": True, "path": path})
 
     # ---- 笔记导出 ----
     @app.post("/api/export")

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>药鉴（YaoJian）——能查原文的课程资料问答助手</title>
+<link rel="icon" href="frontend/assets/favicon.png">
+<style>
+:root {
+  --primary: #1a4d80; --accent: #0f5c4a; --bg: #faf9f6; --card: #fff;
+  --border: #e3e0d8; --text: #23272b; --text-2: #6b7076;
+  --serif: Georgia, "Songti SC", "STSong", "SimSun", serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+/* hero */
+.hero { text-align: center; padding: 84px 24px 56px; }
+.logo { width: 96px; height: 96px; border-radius: 50%; box-shadow: 0 6px 24px rgba(26,77,128,.25); }
+h1 { font-family: var(--serif); font-size: 44px; letter-spacing: 6px; margin: 20px 0 6px; color: var(--primary); }
+.hero .en { font-size: 14px; color: var(--text-2); letter-spacing: 2px; margin-bottom: 18px; }
+.hero p { max-width: 640px; margin: 0 auto; color: var(--text-2); font-size: 16px; }
+.cta { margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 26px; border-radius: 12px; text-decoration: none;
+  font-size: 15px; font-weight: 600; transition: all .15s;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: #123c66; }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+/* 数据条 */
+.stats { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px 22px; text-align: center; min-width: 130px;
+}
+.stat b { display: block; font-size: 22px; color: var(--primary); font-family: var(--serif); }
+.stat span { font-size: 12px; color: var(--text-2); }
+/* 功能 */
+.sec { padding: 40px 0; }
+.sec h2 { font-family: var(--serif); text-align: center; font-size: 26px; color: var(--primary); margin-bottom: 8px; }
+.sec .sub { text-align: center; color: var(--text-2); font-size: 14px; margin-bottom: 28px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+}
+.card h3 { font-size: 16px; margin-bottom: 6px; }
+.card p { font-size: 13px; color: var(--text-2); }
+.card .ic { font-size: 26px; display: block; margin-bottom: 8px; }
+/* 引用示意 */
+.quote {
+  background: #fdfbf3; border: 1px solid #e8e1cc; border-left: 3px solid var(--accent);
+  border-radius: 4px 10px 10px 4px; padding: 16px 20px; margin: 20px auto; max-width: 640px;
+  font-size: 13px; color: #3d3a32;
+}
+.quote .q { color: var(--text-2); margin-bottom: 8px; }
+/* footer */
+footer { text-align: center; padding: 40px 24px; color: var(--text-2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+footer a { color: var(--primary); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="logo" src="frontend/assets/logo.png" alt="药鉴 logo">
+  <h1>药 鉴</h1>
+  <div class="en">YAO JIAN · 能查原文的课程资料问答助手</div>
+  <p>把课件、讲义、手写笔记装进自己的电脑，问什么答什么——<br>每个答案都能点开原文逐字核对，查不到就明说，绝不编造。</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest">⬇ 下载 Windows 版（解压即用）</a>
+    <a class="btn btn-ghost" href="https://github.com/yuyuyuuyuyuy/yaojian">GitHub 开源仓库</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>25/25</b><span>金标评测通过（三关自动评分）</span></div>
+    <div class="stat"><b>1~2 分</b><span>每次问答费用（充值 20 元用一学期）</span></div>
+    <div class="stat"><b>100%</b><span>引用正确率（20 题验收）</span></div>
+    <div class="stat"><b>全本机</b><span>资料与对话不上传云端</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="sec">
+    <h2>核心能力</h2>
+    <div class="sub">覆盖「资料 → 学习 → 复习」的完整闭环</div>
+    <div class="grid">
+      <div class="card"><span class="ic">📚</span><h3>资料入库</h3><p>课件 PDF/PPT/Word 直接导入；PPT 图片页自动识别文字；扫描版讲义整本 OCR；多门课建多个知识库，任意组合问答。</p></div>
+      <div class="card"><span class="ic">📷</span><h3>拍照识字</h3><p>手写笔记、课本照片拍一张就转成文字，识别结果可逐张校对修改，一键存入知识库参与问答。</p></div>
+      <div class="card"><span class="ic">📑</span><h3>引用原文核对</h3><p>每个结论带引用编号，点击即定位到原文并展开对照（含出处与相似度）——把「信任」做进产品。</p></div>
+      <div class="card"><span class="ic">📝</span><h3>知识笔记</h3><p>输入关键词，自动整理成定义/要点/公式/易错的结构化复习笔记，可导出 Word、一键存回知识库。</p></div>
+      <div class="card"><span class="ic">🛡</span><h3>防幻觉双防线</h3><p>检索阈值挡住无关领域（不调用大模型省钱）；提示词铁律让模型诚实拒答同领域"漂移"问题。</p></div>
+      <div class="card"><span class="ic">💬</span><h3>多轮追问</h3><p>「它分几种方法？」这样的口语追问也能正确理解指代；回答支持复制/停止/重新生成。</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>信任何以成立</h2>
+    <div class="sub">一个演示：问「重金属检查法分几种方法？」，回答带引用，点开即可核对原文</div>
+    <div class="quote">
+      <div class="q">问：重金属检查法分几种方法？</div>
+      重金属检查法（通则 0821）分为三种方法：<br>• <b>[1]</b> 硫代乙酰胺法——适用于溶于水、稀酸和乙醇的药品；<br>• <b>[2]</b> 炽灼后的硫代乙酰胺法——适用于含芳环、杂环以及不溶于水、稀酸及乙醇的药品；<br>• <b>[3]</b> 硫化钠法——适用于溶于碱性水溶液的药品。<br><br>▸ 点击 [1] 即展开：《中国药典》2025 年版四部通则 0821 原文段落，含相似度分数。
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>为什么可信</h2>
+    <div class="grid">
+      <div class="card"><span class="ic">🧪</span><h3>自动化评测体系</h3><p>自研金标评测：20 单题 + 3 组追问 + 2 拒答题，引用溯源/要点覆盖/拒答三关自动评分，每次改动跑回归对比，防止能力退化。</p></div>
+      <div class="card"><span class="ic">🔬</span><h3>为药学场景定制</h3><p>内置 QC 检验知识库开箱即用（药典通则 10 大类语料），面向化工药学大学生的真实课程需求设计。</p></div>
+      <div class="card"><span class="ic">🔒</span><h3>数据留在本机</h3><p>所有文档、索引、对话历史保存在自己电脑；仅在问答/识别时把必要片段发送给大模型 API。</p></div>
+      <div class="card"><span class="ic">🌐</span><h3>开源透明</h3><p>MIT 许可开源，代码可审查；桌面 APP 跨平台（Windows 已发布，macOS 规划中）。</p></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://github.com/yuyuyuuyuyuy/yaojian">药鉴（YaoJian）</a> · MIT License · 由 <a href="https://github.com/yuyuyuuyuyuy">yuyuyuuyuyuy</a> 开发维护<br>
+  问答内容由大模型基于你导入的资料生成，正式实验与合规场景请以原始文献/标准原文为准
+</footer>
+
+</body>
+</html>

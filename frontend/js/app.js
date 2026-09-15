@@ -83,6 +83,7 @@ async function initApp() {
   bindOcrPdfModal();
   bindNoteModals();
   bindWizard();
+  bindFeedback();
 
   $("btn-open-settings").addEventListener("click", () => openSettings());
   $("btn-back-chat").addEventListener("click", () => showView("chat"));

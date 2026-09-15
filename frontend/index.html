@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>药鉴</title>
+<link rel="icon" href="/static/assets/favicon.png">
 <link rel="stylesheet" href="/static/css/style.css">
 <script>
 /* 防深色模式启动闪白：先用 localStorage 镜像决定主题，settings.json 读取后再修正 */
@@ -21,7 +22,7 @@
 
   <!-- 侧边栏（三期：功能分区管理，学习工具高亮） -->
   <aside id="sidebar">
-    <div class="brand">🧪 药鉴</div>
+    <div class="brand"><img src="/static/assets/logo.png" class="brand-logo" alt="药鉴">药鉴</div>
     <div class="side-scroll">
       <div class="side-group">
         <div class="side-group-title">知识库</div>
@@ -115,6 +116,7 @@
           <div class="form-row">
             <button id="btn-save-settings" class="btn btn-primary">保存设置</button>
             <button id="btn-reopen-wizard" class="btn btn-ghost">👋 重新查看使用引导</button>
+            <button id="btn-open-feedback" class="btn btn-ghost">💬 意见反馈</button>
           </div>
           <div class="info-box">
             <b>费用说明</b>：每次问答按量计费约 1~2 分钱。查询余额：
@@ -270,6 +272,21 @@
     </div>
   </div>
 
+  <!-- 意见反馈弹窗 -->
+  <div id="modal-feedback" class="modal hidden">
+    <div class="modal-box">
+      <h3>💬 意见反馈</h3>
+      <p class="modal-desc">遇到问题或有改进建议？你的反馈对药鉴很重要。可提交到 GitHub（推荐，公开可见）、复制内容，或先保存在本机。</p>
+      <textarea id="fb-text" class="fb-text" rows="5" placeholder="描述你遇到的问题或建议（附上操作步骤更好）…"></textarea>
+      <div class="modal-actions">
+        <button id="btn-fb-close" class="btn btn-ghost">关闭</button>
+        <button id="btn-fb-local" class="btn">保存到本机</button>
+        <button id="btn-fb-copy" class="btn">复制内容</button>
+        <button id="btn-fb-issue" class="btn btn-primary">提交到 GitHub</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 首次使用引导（分步向导，完成/跳过后不再出现，设置页可重新查看） -->
   <div id="modal-wizard" class="modal hidden">
     <div class="modal-box modal-box-wide wizard-box">
@@ -296,6 +313,7 @@
 <script src="/static/js/ocr.js"></script>
 <script src="/static/js/notes.js"></script>
 <script src="/static/js/wizard.js"></script>
+<script src="/static/js/feedback.js"></script>
 <script src="/static/js/settings.js"></script>
 <script src="/static/js/debug.js"></script>
 <script src="/static/js/stats.js"></script>
