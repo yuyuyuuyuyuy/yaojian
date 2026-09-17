@@ -20,7 +20,7 @@ body {
 /* hero */
 .hero { text-align: center; padding: 84px 24px 56px; }
 .logo { width: 96px; height: 96px; border-radius: 50%; box-shadow: 0 6px 24px rgba(26,77,128,.25); }
-h1 { font-family: var(--serif); font-size: 44px; letter-spacing: 6px; margin: 20px 0 6px; color: var(--primary); }
+h1 { font-family: var(--serif); font-size: 38px; letter-spacing: 4px; margin: 20px 0 6px; color: var(--primary); }
 .hero .en { font-size: 14px; color: var(--text-2); letter-spacing: 2px; margin-bottom: 18px; }
 .hero p { max-width: 640px; margin: 0 auto; color: var(--text-2); font-size: 16px; }
 .cta { margin-top: 30px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -68,17 +68,17 @@ footer a { color: var(--primary); }
 
 <div class="hero">
   <img class="logo" src="frontend/assets/logo.png" alt="药鉴 logo">
-  <h1>药 鉴</h1>
-  <div class="en">YAO JIAN · 能查原文的课程资料问答助手</div>
-  <p>把课件、讲义、手写笔记装进自己的电脑，问什么答什么——<br>每个答案都能点开原文逐字核对，查不到就明说，绝不编造。</p>
+  <h1>答有所据，学有所成</h1>
+  <div class="en">YAO JIAN · 背得会 · 考得上的药学学习助手</div>
+  <p>把课件、真题、手写笔记装进自己的电脑，问什么答什么——<br>每个答案都能点开原文逐字核对；一键生成复习笔记与记忆卡片，查不到就明说，绝不编造。</p>
   <div class="cta">
     <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest">⬇ 下载 Windows 版（解压即用）</a>
     <a class="btn btn-ghost" href="https://github.com/yuyuyuuyuyuy/yaojian">GitHub 开源仓库</a>
   </div>
   <div class="stats">
     <div class="stat"><b>25/25</b><span>金标评测通过（三关自动评分）</span></div>
+    <div class="stat"><b>24 项</b><span>自动化测试全过（调度/备份/埋点）</span></div>
     <div class="stat"><b>1~2 分</b><span>每次问答费用（充值 20 元用一学期）</span></div>
-    <div class="stat"><b>100%</b><span>引用正确率（20 题验收）</span></div>
     <div class="stat"><b>全本机</b><span>资料与对话不上传云端</span></div>
   </div>
 </div>
@@ -89,11 +89,13 @@ footer a { color: var(--primary); }
     <div class="sub">覆盖「资料 → 学习 → 复习」的完整闭环</div>
     <div class="grid">
       <div class="card"><span class="ic">📚</span><h3>资料入库</h3><p>课件 PDF/PPT/Word 直接导入；PPT 图片页自动识别文字；扫描版讲义整本 OCR；多门课建多个知识库，任意组合问答。</p></div>
-      <div class="card"><span class="ic">📷</span><h3>拍照识字</h3><p>手写笔记、课本照片拍一张就转成文字，识别结果可逐张校对修改，一键存入知识库参与问答。</p></div>
       <div class="card"><span class="ic">📑</span><h3>引用原文核对</h3><p>每个结论带引用编号，点击即定位到原文并展开对照（含出处与相似度）——把「信任」做进产品。</p></div>
-      <div class="card"><span class="ic">📝</span><h3>知识笔记</h3><p>输入关键词，自动整理成定义/要点/公式/易错的结构化复习笔记，可导出 Word、一键存回知识库。</p></div>
-      <div class="card"><span class="ic">🛡</span><h3>防幻觉双防线</h3><p>检索阈值挡住无关领域（不调用大模型省钱）；提示词铁律让模型诚实拒答同领域"漂移"问题。</p></div>
-      <div class="card"><span class="ic">💬</span><h3>多轮追问</h3><p>「它分几种方法？」这样的口语追问也能正确理解指代；回答支持复制/停止/重新生成。</p></div>
+      <div class="card"><span class="ic">🎴</span><h3>背得会</h3><p>笔记一键生成问答卡，按艾宾浩斯记忆曲线复习；忘记当天重现、轻松加速推进；每日上限防积压不滚雪球；选中文字即可单独制卡。</p></div>
+      <div class="card"><span class="ic">📝</span><h3>知识笔记</h3><p>输入关键词先看该主题有哪些知识模块，勾选需要的再生成；支持思维导图格式；可导出 Word、一键存回知识库。</p></div>
+      <div class="card"><span class="ic">🎓</span><h3>考研场景包</h3><p>真题/讲义导入后 AI 自动提取考点标签，考点分布一目了然；标签可手动增删修正；按考点提问定位到历年真题出处。</p></div>
+      <div class="card"><span class="ic">📷</span><h3>拍照识字</h3><p>手写笔记、课本照片拍一张就转成文字，识别结果可逐张校对修改，一键存入知识库参与问答。</p></div>
+      <div class="card"><span class="ic">🛡</span><h3>防幻觉双防线</h3><p>检索阈值挡住无关领域（不调用大模型省钱）；提示词铁律让模型诚实拒答——查不到就明说，绝不编造。</p></div>
+      <div class="card"><span class="ic">💬</span><h3>多轮追问</h3><p>「它分几种方法？」这样的口语追问也能正确理解指代；回答支持选中复制/停止/重新生成。</p></div>
     </div>
   </div>
 
@@ -102,7 +104,7 @@ footer a { color: var(--primary); }
     <div class="sub">一个演示：问「重金属检查法分几种方法？」，回答带引用，点开即可核对原文</div>
     <div class="quote">
       <div class="q">问：重金属检查法分几种方法？</div>
-      重金属检查法（通则 0821）分为三种方法：<br>• <b>[1]</b> 硫代乙酰胺法——适用于溶于水、稀酸和乙醇的药品；<br>• <b>[2]</b> 炽灼后的硫代乙酰胺法——适用于含芳环、杂环以及不溶于水、稀酸及乙醇的药品；<br>• <b>[3]</b> 硫化钠法——适用于溶于碱性水溶液的药品。<br><br>▸ 点击 [1] 即展开：《中国药典》2025 年版四部通则 0821 原文段落，含相似度分数。
+      重金属检查法（通则 0821）分为三种方法：<br>• <b>[1]</b> 硫代乙酰胺法——适用于溶于水、稀酸和乙醇的药品；<br>• <b>[2]</b> 炽灼后的硫代乙酰胺法——适用于含芳环、杂环以及不溶于水、稀酸及乙醇的药品；<br>• <b>[3]</b> 硫化钠法——适用于溶于碱性水溶液的药品。<br><br>▸ 点击 [1] 即展开：《中国药典》2025 年版四部通则 0821 原文段落，含相似度分数。<br>▸ 查不到时：明确拒答并给出建议——「资料中未找到相关内容。建议：①换关键词 ②导入相关课件 ③扫描版 PDF 可整本 OCR」。
     </div>
   </div>
 
