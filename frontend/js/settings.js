@@ -33,6 +33,39 @@ function bindSettingsView() {
 
   // 重新查看使用引导（分步向导逻辑见 wizard.js）
   $("btn-reopen-wizard").addEventListener("click", openWizard);
+
+  // 备份与恢复（F13）
+  $("btn-backup-export").addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.href = "/api/backup/export";
+    a.download = "";
+    a.click();
+  });
+  $("btn-backup-pick").addEventListener("click", () => $("backup-file-input").click());
+  $("backup-file-input").addEventListener("change", async (e) => {
+    const f = e.target.files[0];
+    e.target.value = "";
+    if (!f) return;
+    const fd = new FormData();
+    fd.append("file", f);
+    try {
+      const resp = await fetch("/api/backup/import", { method: "POST", body: fd });
+      const data = await resp.json();
+      if (!data.ok) throw new Error(data.error || "校验失败");
+      const s = data.summary;
+      if (!confirm(`备份包校验通过：${s.kb_count} 个知识库、${s.conv_count} 条对话。\n\n恢复将【覆盖】当前全部数据（旧数据会保留一份可找回）。\n确定继续吗？`)) return;
+      const resp2 = await fetch("/api/backup/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token }),
+      });
+      const d2 = await resp2.json();
+      if (!d2.ok) throw new Error(d2.error || "恢复失败");
+      alert("恢复完成！请关闭并重新打开药鉴。");
+    } catch (err) {
+      alert("恢复失败：" + err.message);
+    }
+  });
 }
 
 function openSettings() {
@@ -45,9 +78,29 @@ function openSettings() {
   $("set-theme").value = s.theme || "auto";
   $("set-top-k").value = s.top_k || 6;
   $("set-threshold").value = s.score_threshold ?? 0.3;
+  $("set-card-limit").value = s.card_daily_limit || 20;
   $("data-dir").textContent = s.data_dir || "本机用户数据目录";
   refreshDebugKbSelect();
+  loadUsage();
   showView("settings");
+}
+
+/* ---------- 用量与费用（F14：本机估算，以控制台账单为准） ---------- */
+
+async function loadUsage() {
+  const box = document.getElementById("usage-box");
+  if (!box) return;
+  try {
+    const resp = await fetch("/api/usage");
+    const data = await resp.json();
+    if (!data.ok) throw new Error(data.error || "加载失败");
+    const u = data.usage;
+    const ocr = u.ocr_pdf_pages ? `＋ PDF 整本 OCR ${u.ocr_pdf_pages} 页` : "";
+    box.innerHTML = `<b>本月用量（${u.month_start}）</b>：问答 ${u.qa} 次 ｜ 笔记 ${u.note} 篇 ｜ 图片识别 ${u.ocr_images} 张${ocr}<br>` +
+      `<b>估算费用：${u.cost_low} ~ ${u.cost_high} 元</b>（按公开单价区间估算，以百炼控制台账单为准）`;
+  } catch (e) {
+    box.textContent = "本月用量加载失败：" + e.message;
+  }
 }
 
 async function saveSettings() {
@@ -59,6 +112,7 @@ async function saveSettings() {
     theme: $("set-theme").value || "auto",
     top_k: parseInt($("set-top-k").value) || 6,
     score_threshold: parseFloat($("set-threshold").value) ?? 0.3,
+    card_daily_limit: parseInt($("set-card-limit").value) || 20,
   };
   const r = await API.post("/api/settings", body);
   if (r.ok !== undefined && r.ok !== false) {

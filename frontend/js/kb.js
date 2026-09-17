@@ -25,7 +25,7 @@ function renderKbList() {
       <span class="kb-actions">
         <button data-act="add" title="添加文件">＋</button>
         <button data-act="ingest" title="重建索引">⟳</button>
-        ${k.builtin ? "" : `<button data-act="ocr" title="整本 OCR（扫描版 PDF）">📑</button><button data-act="rename" title="重命名">✎</button><button data-act="del" title="删除">🗑</button>`}
+        ${k.builtin ? "" : `<button data-act="exam" title="${k.exam ? "考点管理" : "设为考研资料库"}">🎯</button><button data-act="ocr" title="整本 OCR（扫描版 PDF）">📑</button><button data-act="rename" title="重命名">✎</button><button data-act="del" title="删除">🗑</button>`}
       </span>`;
     li.querySelector(".kb-name").addEventListener("click", () => switchKb(k.id));
     li.querySelectorAll(".kb-actions button").forEach(b => {
@@ -58,7 +58,14 @@ async function switchKb(kbId) {
 }
 
 async function kbAction(k, act, li) {
-  if (act === "ingest") {
+  if (act === "exam") {
+    if (k.exam) openExamTags(k);
+    else if (confirm(`将「${k.name}」设为考研资料库？\n导入真题/讲义后可用 AI 自动提取考点标签。`)) {
+      await API.patch(`/api/kbs/${k.id}`, { exam: true });
+      toast("已设为考研资料库 🎯");
+      await refreshKbs();
+    }
+  } else if (act === "ingest") {
     await API.post(`/api/kbs/${k.id}/ingest`);
     toast(`已开始重建「${k.name}」索引`);
     pollIngest(k.id);
@@ -134,10 +141,12 @@ function bindKbModal() {
   $("btn-create-kb").addEventListener("click", async () => {
     const name = $("kb-name").value.trim() || "未命名知识库";
     const hasDocs = App.state.pendingFiles.length || App.state.pendingFolder.length;
+    const exam = (document.querySelector('input[name="kb-purpose"]:checked') || {}).value === "exam";
     $("btn-create-kb").disabled = true;
     try {
       const r = await API.post("/api/kbs", { name });
       const kbId = r.id;
+      if (exam) await API.patch(`/api/kbs/${kbId}`, { exam: true });
       let imported = 0;
       if (hasDocs) {
         $("kb-create-progress").classList.remove("hidden");

@@ -33,6 +33,7 @@
         <div class="side-group-title">学习工具</div>
         <button id="btn-ocr" class="side-btn side-btn-tool" title="拍照识字：手写笔记/课本照片转文字入库">📷 拍照识字</button>
         <button id="btn-note" class="side-btn side-btn-tool" title="输入关键词，整理知识库内容为结构化复习笔记">📝 知识笔记</button>
+        <button id="btn-cards" class="side-btn side-btn-tool" title="背得会：把笔记变成问答卡，按记忆曲线复习">🎴 背得会</button>
         <button id="btn-notes" class="side-btn" title="查看保存过的知识笔记">📄 我的笔记</button>
       </div>
       <div class="side-group">
@@ -88,6 +89,7 @@
           <button class="tab active" data-tab="basic">基本设置</button>
           <button class="tab" data-tab="debug">召回调试</button>
           <button class="tab" data-tab="stats">语料统计</button>
+          <button class="tab" data-tab="usage">使用数据</button>
         </div>
 
         <!-- 基本设置 -->
@@ -112,6 +114,9 @@
               </select></label>
             <label>检索条数 top_k<input id="set-top-k" type="number" min="1" max="10" value="6"></label>
             <label>相似度阈值<input id="set-threshold" type="number" min="0" max="1" step="0.05" value="0.3"></label>
+            <label>每日复习卡上限
+              <span class="hint">背得会：到期卡超上限顺延，不滚雪球</span>
+              <input id="set-card-limit" type="number" min="5" max="200" value="20"></label>
           </div>
           <div class="form-row">
             <button id="btn-save-settings" class="btn btn-primary">保存设置</button>
@@ -122,11 +127,21 @@
             <b>费用说明</b>：每次问答按量计费约 1~2 分钱。查询余额：
             <a href="https://bailian.console.aliyun.com/" target="_blank" rel="noopener">百炼控制台</a>。
             若余额耗尽会报错，请及时充值（20 元可用很久）。
+            <div id="usage-box" class="usage-box">本月用量加载中…</div>
           </div>
           <div class="info-box">
             <b>数据与隐私</b>：所有文档、对话历史均保存在本机（
             <code id="data-dir"></code>）。
             问答时检索到的文档片段会发送给阿里云百炼用于生成回答，请注意文档内容的合规性。
+          </div>
+          <div class="info-box">
+            <b>备份与恢复</b>：换电脑或重装系统前，先导出一份备份包（含知识库/对话/笔记，不含 API Key）。
+            在新电脑上导入恢复即可。恢复会<b>覆盖当前全部数据</b>（旧数据会保留一份在数据目录旁，误操作可找回）。
+            <div class="row">
+              <button id="btn-backup-export" class="btn">⬇ 导出备份包</button>
+              <button id="btn-backup-pick" class="btn">⬆ 导入备份包</button>
+              <input type="file" id="backup-file-input" accept=".zip" class="hidden">
+            </div>
           </div>
         </div>
 
@@ -150,6 +165,16 @@
           <div class="info-box">各知识库的语料质量台账：文档数、总块数、上次索引时间、解析失败清单。导入资料后到这里核对「哪些文件没进索引、为什么」。</div>
           <div id="stats-panels"></div>
         </div>
+
+        <!-- 使用数据（S6 埋点：本机记录、用户可见可导出可删除） -->
+        <div id="tab-usage" class="tab-panel hidden">
+          <div class="info-box">药鉴在本机记录你的使用行为（问了什么题、点了哪些引用等<b>只记行为不记内容</b>），用于改进产品。数据只存你的电脑、绝不上传；你随时可以查看、导出或删除。</div>
+          <div id="usage-stats"></div>
+          <div class="form-row">
+            <button id="btn-usage-export" class="btn btn-primary">导出使用数据（JSON+CSV）</button>
+            <button id="btn-usage-clear" class="btn btn-ghost" title="清空本机记录的使用数据（不可恢复）">删除全部记录</button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -159,6 +184,11 @@
     <div class="modal-box">
       <h3>新建知识库</h3>
       <p class="modal-desc">给知识库起个名字，并选择课程资料（txt / pdf / docx / pptx，可多选或整个文件夹）。PPT 仅支持 .pptx 格式（老 .ppt 请另存为 .pptx），图片型页面会自动识别文字（约 1~2 分/页）。</p>
+      <div class="row">
+        <span class="hint">用途：</span>
+        <label><input type="radio" name="kb-purpose" value="normal" checked> 📚 课程资料</label>
+        <label><input type="radio" name="kb-purpose" value="exam"> 🎓 考研资料（真题/讲义，可 AI 提取考点）</label>
+      </div>
       <input id="kb-name" placeholder="知识库名称，如：仪器分析">
       <div class="row">
         <button id="btn-pick-files" class="btn">📄 选择文件</button>
@@ -272,6 +302,31 @@
     </div>
   </div>
 
+  <!-- 背得会弹窗（F5：卡片复习） -->
+  <div id="modal-cards" class="modal hidden">
+    <div class="modal-box">
+      <h3>🎴 背得会</h3>
+      <p class="modal-desc">按记忆曲线复习问答卡：忘记的今天重现、正常的按曲线推进。每张卡可回到来源笔记核对原文。</p>
+      <div id="cards-body"></div>
+      <div class="modal-actions">
+        <button id="btn-cards-close" class="btn btn-ghost">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 考点管理弹窗（F8：考研场景包） -->
+  <div id="modal-exam-tags" class="modal hidden">
+    <div class="modal-box modal-box-wide">
+      <h3>🎯 考点管理</h3>
+      <p class="modal-desc" id="exam-kb-name"></p>
+      <div id="exam-tags-body"></div>
+      <div class="modal-actions">
+        <button id="btn-exam-unset" class="btn btn-ghost">切换为普通课程库</button>
+        <button id="btn-exam-close" class="btn btn-ghost">关闭</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 意见反馈弹窗 -->
   <div id="modal-feedback" class="modal hidden">
     <div class="modal-box">
@@ -317,5 +372,8 @@
 <script src="/static/js/settings.js"></script>
 <script src="/static/js/debug.js"></script>
 <script src="/static/js/stats.js"></script>
+<script src="/static/js/events.js"></script>
+<script src="/static/js/cards.js"></script>
+<script src="/static/js/exam.js"></script>
 </body>
 </html>

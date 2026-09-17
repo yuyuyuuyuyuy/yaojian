@@ -237,7 +237,15 @@ async function streamAnswer(asst, question, regenerate) {
         let obj;
         try { obj = JSON.parse(line.slice(5).trim()); } catch (e) { continue; }
         if (obj.delta) { text += obj.delta; scheduleRender(); }
-        if (obj.error) { text += "\n\n> ⚠️ 出错了：" + obj.error; scheduleRender(); }
+        if (obj.error) {
+          // F14：余额类错误给友好提示（其余错误原样展示）
+          const err = String(obj.error);
+          const isBalance = /arrear|balance|insufficient|quota|limit|余额|额度|欠费/i.test(err);
+          text += isBalance
+            ? "\n\n> ⚠️ API 余额可能不足或已达限额。可：①前往[百炼控制台](https://bailian.console.aliyun.com/)充值 ②在设置页填入自己的 Key（设置 → API Key）。\n>\n> 原始错误：" + err
+            : "\n\n> ⚠️ 出错了：" + err;
+          scheduleRender();
+        }
         if (obj.done !== undefined) {
           finalizeMessage(asst, content, text, obj.citations || []);
           break;
@@ -446,6 +454,20 @@ function bindChatEvents() {
     const cite = e.target.closest(".cite");
     if (cite) {
       const msgEl = cite.closest(".msg");
+      // 埋点：引用核对行为（仅本机记录；信任过程指标）
+      try {
+        const count = parseInt(sessionStorage.getItem("la_cite_count") || "0", 10) + 1;
+        sessionStorage.setItem("la_cite_count", String(count));
+        fetch("/api/events/citation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            conv_id: App.state.convId || null,
+            session_order: count,
+            ref_index: parseInt(cite.dataset.cite || "1", 10),
+          }),
+        }).catch(() => {});
+      } catch (e) { /* 埋点失败静默 */ }
       if (msgEl && msgEl.dataset.citations) {
         const n = parseInt(cite.dataset.cite) - 1;
         const item = msgEl.querySelectorAll(".src-item")[n];

@@ -28,8 +28,23 @@ def init_db():
         CREATE TABLE IF NOT EXISTS notes(
             id INTEGER PRIMARY KEY AUTOINCREMENT, keyword TEXT,
             kb_ids TEXT, content TEXT, created_at TEXT);
+        CREATE TABLE IF NOT EXISTS events(
+            id INTEGER PRIMARY KEY AUTOINCREMENT, ts TEXT,
+            event TEXT, conv_id TEXT, kb_id TEXT, payload TEXT, version TEXT);
+        CREATE TABLE IF NOT EXISTS cards(
+            id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT, answer TEXT,
+            source_note_id INTEGER, source_kb_id TEXT, created_at TEXT,
+            interval_days REAL DEFAULT 0, ease REAL DEFAULT 2.5,
+            reps INTEGER DEFAULT 0, due_at TEXT, lapses INTEGER DEFAULT 0);
+        CREATE TABLE IF NOT EXISTS exam_tags(
+            id INTEGER PRIMARY KEY AUTOINCREMENT, kb_id TEXT, file_name TEXT,
+            tag TEXT, created_at TEXT);
         """
     )
+    try:
+        db.execute("ALTER TABLE kbs ADD COLUMN exam INTEGER DEFAULT 0")
+    except Exception:
+        pass  # 列已存在
     db.commit()
     db.close()
 
@@ -191,6 +206,14 @@ def rename_kb(kb_id, name):
     db.close()
 
 
+def set_kb_exam(kb_id, exam):
+    """F8：知识库用途切换（普通 0 / 考研 1）。"""
+    db = _connect()
+    db.execute("UPDATE kbs SET exam=? WHERE id=?", (1 if exam else 0, kb_id))
+    db.commit()
+    db.close()
+
+
 def delete_kb_row(kb_id):
     db = _connect()
     db.execute("DELETE FROM kbs WHERE id=?", (kb_id,))
@@ -226,6 +249,21 @@ def list_notes():
             d["kb_ids"] = []
         out.append(d)
     return out
+
+
+def get_note(note_id):
+    """按 id 取一篇笔记；不存在返回 None。"""
+    db = _connect()
+    row = db.execute("SELECT * FROM notes WHERE id=?", (note_id,)).fetchone()
+    db.close()
+    if row is None:
+        return None
+    d = dict(row)
+    try:
+        d["kb_ids"] = json.loads(d["kb_ids"] or "[]")
+    except Exception:
+        d["kb_ids"] = []
+    return d
 
 
 def delete_note(note_id):

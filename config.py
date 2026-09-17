@@ -4,7 +4,7 @@ import os
 import sys
 
 APP_NAME = "药鉴"
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 
 # 代码目录（打包后是程序目录，开发时是 app 目录）
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -55,6 +55,7 @@ DEFAULT_SETTINGS = {
     "score_threshold": 0.3,    # 相似度阈值，低于则视为未命中
     "ocr_model": "qwen3-vl-plus",  # OCR 多模态模型（手写/公式优先；印刷体可换 qwen-vl-ocr-latest 更省）
     "theme": "auto",           # 外观主题：auto / light / dark
+    "card_daily_limit": 20,    # 背得会：每日复习卡量上限（防积压，K11 教训）
     "first_run": True,         # 首次启动向导（旧版标记，保留兼容）
     "onboarding_done": False,  # 首次使用引导（分步向导）是否已完成，完成/跳过后不再显示
 }

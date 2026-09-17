@@ -42,22 +42,77 @@ function noteKbIds() {
   return sel;
 }
 
+let pendingModules = null;  // 第一步返回的模块清单（勾选用）
+
 async function generateNote() {
+  /* 两步式（F6）：①检索内容分析模块 → ②勾选模块+选格式生成 */
   const keyword = $("note-keyword").value.trim();
   if (!keyword) return toast("请输入关键词");
   const result = $("note-result");
-  $("btn-note-generate").disabled = true;
-  result.innerHTML = `<div class="note-loading">🧠 正在检索知识库并整理笔记…（约 10~30 秒）</div>`;
+  const btn = $("btn-note-generate");
+  btn.disabled = true;
+  result.innerHTML = `<div class="note-loading">🔍 正在检索知识库、分析该主题有哪些内容…（约 3~10 秒）</div>`;
   try {
-    const r = await API.post("/api/notes/generate", { keyword, kb_ids: noteKbIds() });
-    if (!r.ok) { result.innerHTML = `<div class="info-box">生成失败：${escapeHtml(r.error || "未知错误")}</div>`; return; }
+    const r = await API.post("/api/notes/modules", { keyword, kb_ids: noteKbIds() });
+    if (!r.ok) { result.innerHTML = `<div class="info-box">分析失败：${escapeHtml(r.error || "未知错误")}</div>`; return; }
     if (r.empty) { result.innerHTML = `<div class="info-box">${escapeHtml(r.message)}</div>`; return; }
-    currentNote = { keyword, content: r.note, citations: r.citations || [], kbIds: noteKbIds() };
-    renderNoteResult(result);
+    pendingModules = { keyword, modules: r.modules || [], kbIds: noteKbIds() };
+    renderModuleSelect(result);
   } catch (e) {
     result.innerHTML = `<div class="info-box">请求失败：${escapeHtml(e.message)}</div>`;
   } finally {
-    $("btn-note-generate").disabled = false;
+    btn.disabled = false;
+  }
+}
+
+function renderModuleSelect(result) {
+  const p = pendingModules;
+  result.innerHTML = "";
+  if (!p.modules.length) {
+    result.innerHTML = `<div class="info-box">该主题在所选知识库中内容很少，没有可整理的模块。</div>`;
+    return;
+  }
+  const box = document.createElement("div");
+  box.className = "note-modules";
+  box.innerHTML = `
+    <div class="info-box">该主题在资料中包含以下模块，勾选你需要的（默认全选）：</div>
+    <div class="note-module-list">
+      ${p.modules.map((m, i) => `
+        <label class="note-module-item">
+          <input type="checkbox" class="note-module-box" data-key="${escapeHtml(m.key)}" checked>
+          <span><b>${escapeHtml(m.title)}</b><span class="hint">${escapeHtml(m.desc)}</span></span>
+        </label>`).join("")}
+    </div>
+    <div class="row note-format-row">
+      <span class="hint">输出格式：</span>
+      <label><input type="radio" name="note-format" value="text" checked> 📄 文本笔记</label>
+      <label><input type="radio" name="note-format" value="outline"> 🧠 思维导图（大纲）</label>
+      <button class="btn btn-primary" id="btn-note-confirm">生成笔记（约 10~30 秒）</button>
+    </div>`;
+  result.appendChild(box);
+  $("btn-note-confirm").addEventListener("click", () => confirmGenerate());
+}
+
+async function confirmGenerate() {
+  const p = pendingModules;
+  const modules = [...document.querySelectorAll("#note-result .note-module-box:checked")].map(x => x.dataset.key);
+  if (!modules.length) return toast("请至少勾选一个模块");
+  const format = (document.querySelector('input[name="note-format"]:checked') || {}).value || "text";
+  const result = $("note-result");
+  result.innerHTML = `<div class="note-loading">🧠 正在按所选模块整理笔记…（约 10~30 秒）</div>`;
+  try {
+    const r = await API.post("/api/notes/generate", {
+      keyword: p.keyword, kb_ids: p.kbIds, modules, format,
+    });
+    if (!r.ok) { result.innerHTML = `<div class="info-box">生成失败：${escapeHtml(r.error || "未知错误")}</div>`; return; }
+    if (r.empty) { result.innerHTML = `<div class="info-box">${escapeHtml(r.message)}</div>`; return; }
+    currentNote = {
+      keyword: p.keyword, content: r.note, citations: r.citations || [],
+      kbIds: p.kbIds, outline: !!r.outline,
+    };
+    renderNoteResult(result);
+  } catch (e) {
+    result.innerHTML = `<div class="info-box">请求失败：${escapeHtml(e.message)}</div>`;
   }
 }
 
@@ -65,7 +120,8 @@ function renderNoteResult(result) {
   const n = currentNote;
   result.innerHTML = "";
   const content = document.createElement("div");
-  content.className = "md-content note-md";
+  // 思维导图（大纲）格式：渲染成带树形连接线的层级列表
+  content.className = n.outline ? "md-content note-md outline-tree" : "md-content note-md";
   content.innerHTML = renderMd(n.content);
   result.appendChild(content);
   if (n.citations.length) result.appendChild(buildCitationsEl(n.citations));
@@ -166,10 +222,30 @@ async function renderNotesList() {
         <div class="history-title">📝 ${escapeHtml(n.keyword)}</div>
         <div class="history-meta">${escapeHtml(n.created_at || "")} · ${(n.content || "").length} 字</div>
       </div>
+      <button class="btn note-gen-cards" data-act="cards" title="把这篇笔记一键生成问答卡">🎴 生成卡片</button>
       <button class="icon-btn notes-del" data-act="del" title="删除该笔记">🗑</button>
     </div>`).join("");
   box.querySelectorAll(".notes-item").forEach(item => {
-    item.addEventListener("click", () => viewNote(parseInt(item.dataset.id)));
+    item.addEventListener("click", (e) => {
+      if (e.target.closest("button")) return;
+      viewNote(parseInt(item.dataset.id));
+    });
+    item.querySelector('[data-act="cards"]').addEventListener("click", async (e) => {
+      e.stopPropagation();
+      const btn = e.target.closest("button");
+      btn.disabled = true;
+      btn.textContent = "生成中…";
+      try {
+        const r = await API.post("/api/cards/generate", { note_id: parseInt(item.dataset.id) });
+        if (!r.ok) throw new Error(r.error || "生成失败");
+        toast(r.count ? `已生成 ${r.count} 张卡片 🎴` : (r.message || "没有可生成的内容"), 5000);
+      } catch (err) {
+        toast("生成失败：" + err.message, 5000);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "🎴 生成卡片";
+      }
+    });
     item.querySelector(".notes-del").addEventListener("click", async (e) => {
       e.stopPropagation();
       await API.del(`/api/notes/${item.dataset.id}`);
@@ -195,12 +271,59 @@ function viewNote(id) {
         <button class="btn" data-act="copy">📋 复制</button>
         <button class="btn" data-act="export-md">⬇ 导出 Markdown</button>
         <button class="btn" data-act="export-docx">⬇ 导出 Word</button>
+        <button class="btn btn-primary" data-act="cards">🎴 生成卡片</button>
         <button class="btn btn-ghost" data-act="del">🗑 删除</button>
       </div>
+      <div class="hint">💡 小技巧：选中正文里的一段文字，可只为这段生成 1 张卡</div>
     </div>`;
   const tmp = { keyword: n.keyword, content: n.content, citations: [], kbIds: n.kb_ids || ["all"] };
   box.querySelector('[data-act="back"]').addEventListener("click", renderNotesList);
   box.querySelector('[data-act="copy"]').addEventListener("click", () => copyText(tmp.content));
+  box.querySelector('[data-act="cards"]').addEventListener("click", async (e) => {
+    const btn = e.target.closest("button");
+    btn.disabled = true;
+    btn.textContent = "生成中…";
+    try {
+      const r = await API.post("/api/cards/generate", { note_id: n.id });
+      toast(r.ok ? (r.count ? `已生成 ${r.count} 张卡片 🎴` : (r.message || "没有可生成的内容")) : ("生成失败：" + (r.error || "")), 5000);
+    } catch (err) {
+      toast("生成失败：" + err.message, 5000);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "🎴 生成卡片";
+    }
+  });
+  // 选段制卡：选中正文文字 → 浮标生成 1 张卡（F5 选段模式）
+  const mdEl = box.querySelector(".md-content");
+  if (mdEl) {
+    mdEl.addEventListener("mouseup", () => {
+      const sel = window.getSelection();
+      const text = (sel && sel.toString() || "").trim();
+      if (text.length < 10 || !mdEl.contains(sel.anchorNode)) return;
+      const old = document.querySelector(".sel-card-pop");
+      if (old) old.remove();
+      const pop = document.createElement("button");
+      pop.className = "sel-card-pop";
+      pop.textContent = "🎴 为此段生成卡片";
+      try {
+        const rect = sel.getRangeAt(0).getBoundingClientRect();
+        pop.style.left = Math.min(rect.left, window.innerWidth - 180) + "px";
+        pop.style.top = Math.max(rect.top - 34, 8) + "px";
+      } catch (e) { /* 定位失败则默认左上 */ }
+      document.body.appendChild(pop);
+      pop.addEventListener("mousedown", async (ev) => {
+        ev.preventDefault();
+        pop.remove();
+        sel.removeAllRanges();
+        try {
+          const r = await API.post("/api/cards/from-text", { note_id: n.id, text });
+          toast(r.ok ? "已生成 1 张卡片 🎴" : ("生成失败：" + (r.error || "")), 5000);
+        } catch (err) {
+          toast("生成失败：" + err.message, 5000);
+        }
+      });
+    });
+  }
   box.querySelector('[data-act="export-md"]').addEventListener("click", async () => {
     const r = await API.post("/api/notes/export", { title: tmp.keyword, content: tmp.content, format: "md" });
     if (r.ok) toast(`已导出：${r.path}`, 6000); else toast("导出失败：" + (r.error || ""), 5000);

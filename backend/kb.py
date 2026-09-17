@@ -189,6 +189,10 @@ def start_ingest(kb_id, settings):
                     "updated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
                     "kb_name": kb_name, "error": None, "stats": stats,
                 })
+                from . import events
+                events.record("doc_imported", kb_id=kb_id,
+                              succeeded=int(stats.get("succeeded", 0) or 0),
+                              failed=int(stats.get("failed", 0) or 0))
             except Exception as e:
                 INGEST_STATUS[kb_id] = {
                     "running": False, "pct": 0, "message": "索引失败",
@@ -299,6 +303,8 @@ def start_pdf_ocr(kb_id, rel, settings):
                 "current": rel, "error": None, "updated_at": time.time(),
             }
             start_ingest(kb_id, settings)
+            from . import events
+            events.record("ocr_recognized", kb_id=kb_id, pdf_pages=total)
             OCR_STATUS[kb_id] = {
                 "running": False, "pct": 100, "message": "OCR 完成",
                 "current": rel, "error": None, "updated_at": time.time(),

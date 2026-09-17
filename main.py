@@ -28,6 +28,8 @@ def show_error_box(msg):
 
 def main():
     kb_mod.ensure_data_dirs()
+    from backend import events
+    events.record("app_launch", first_run=not os.path.exists(os.path.join(config.DATA_DIR, "settings.json")))
     port = find_free_port()
     app = create_app()
     threading.Thread(
