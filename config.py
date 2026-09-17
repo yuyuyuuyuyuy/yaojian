@@ -4,7 +4,7 @@ import os
 import sys
 
 APP_NAME = "药鉴"
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 
 # 代码目录（打包后是程序目录，开发时是 app 目录）
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

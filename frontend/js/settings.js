@@ -35,11 +35,29 @@ function bindSettingsView() {
   $("btn-reopen-wizard").addEventListener("click", openWizard);
 
   // 备份与恢复（F13）
-  $("btn-backup-export").addEventListener("click", () => {
-    const a = document.createElement("a");
-    a.href = "/api/backup/export";
-    a.download = "";
-    a.click();
+  $("btn-backup-export").addEventListener("click", async (e) => {
+    const btn = e.target;
+    btn.disabled = true;
+    btn.textContent = "正在打包…";
+    try {
+      const resp = await fetch("/api/backup/export");
+      if (!resp.ok) throw new Error("导出失败（HTTP " + resp.status + "）");
+      const blob = await resp.blob();
+      const dispo = resp.headers.get("Content-Disposition") || "";
+      const m = dispo.match(/filename=\"?([^\";]+)\"?/);
+      const filename = m ? m[1] : "yaojian-backup.zip";
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+      toast(`备份包「${filename}」已导出到下载文件夹 ✅`, 6000);
+    } catch (err) {
+      toast("导出失败：" + err.message, 5000);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "⬇ 导出备份包";
+    }
   });
   $("btn-backup-pick").addEventListener("click", () => $("backup-file-input").click());
   $("backup-file-input").addEventListener("change", async (e) => {

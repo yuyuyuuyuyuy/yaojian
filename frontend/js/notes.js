@@ -264,9 +264,10 @@ function viewNote(id) {
       <div class="notes-detail-head">
         <button class="btn btn-ghost" data-act="back">← 返回列表</button>
         <h4>📝 ${escapeHtml(n.keyword)}</h4>
+        <button class="btn btn-ghost" data-act="close" title="关闭本弹窗">✕ 关闭</button>
       </div>
       <div class="hint">${escapeHtml(n.created_at || "")} · 生成时范围：${escapeHtml(n.kb_ids && n.kb_ids.length === 1 && n.kb_ids[0] === "all" ? "全部知识库" : (n.kb_ids || []).map(x => (App.state.kbs.find(k => k.id === x) || {}).name || x).join("、"))}</div>
-      <div class="md-content note-md">${renderMd(n.content)}</div>
+      <div class="md-content note-md notes-detail-body">${renderMd(n.content)}</div>
       <div class="note-actions">
         <button class="btn" data-act="copy">📋 复制</button>
         <button class="btn" data-act="export-md">⬇ 导出 Markdown</button>
@@ -278,6 +279,7 @@ function viewNote(id) {
     </div>`;
   const tmp = { keyword: n.keyword, content: n.content, citations: [], kbIds: n.kb_ids || ["all"] };
   box.querySelector('[data-act="back"]').addEventListener("click", renderNotesList);
+  box.querySelector('[data-act="close"]').addEventListener("click", () => $("modal-notes").classList.add("hidden"));
   box.querySelector('[data-act="copy"]').addEventListener("click", () => copyText(tmp.content));
   box.querySelector('[data-act="cards"]').addEventListener("click", async (e) => {
     const btn = e.target.closest("button");

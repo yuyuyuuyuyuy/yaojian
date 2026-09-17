@@ -98,8 +98,16 @@ function pollIngest(kbId) {
     if (!st.running) {
       clearInterval(pollTimer);
       refreshKbs();
-      if (st.error) toast(`「${k.name}」索引失败：${st.error}`, 6000);
-      else toast(`「${k.name}」索引完成：${k.chunks} 个知识块`);
+      if (st.error) {
+        toast(`「${k.name}」索引失败：${st.error}`, 8000);
+      } else {
+        const errCount = (st.stats && st.stats.errors && st.stats.errors.length) || 0;
+        if (errCount > 0) {
+          toast(`「${k.name}」索引完成：${k.chunks} 块，但有 ${errCount} 个文件未入库（如扫描版 PDF 需用「📑 整本 OCR」）——详情见 设置 → 语料统计`, 10000);
+        } else {
+          toast(`「${k.name}」索引完成：${k.chunks} 个知识块`);
+        }
+      }
       return;
     }
     const li = [...document.querySelectorAll(".kb-item")].find(el => el.querySelector(".kb-name").textContent === k.name);
