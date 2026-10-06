@@ -367,3 +367,72 @@ body.pg-haigou { --primary: #0e6b75; --primary-dark: #0a525a; --primary-light: #
 /* 项目卡片顶部彩色描边（一蓝一绿，呼应两个项目页主色） */
 .proj-card { border-top: 3px solid var(--primary); }
 .proj-card:nth-child(2) { border-top-color: #0e6b75; }
+
+/* ===== 装饰增强（2026-10 三轮） ===== */
+
+/* 全站背景：淡点阵纹理 */
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(rgba(26,77,128,.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* hero：更强的光晕 + 两枚漂浮圆环 */
+.home-hero { position: relative; overflow: hidden; }
+.home-hero {
+  background:
+    radial-gradient(1000px 420px at 50% -140px, rgba(26,77,128,.13), transparent 70%),
+    radial-gradient(760px 320px at 90% 14%, rgba(15,92,74,.10), transparent 70%),
+    radial-gradient(560px 260px at 8% 42%, rgba(26,77,128,.08), transparent 70%);
+}
+.home-hero::before,
+.home-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floaty 9s ease-in-out infinite;
+}
+.home-hero::before {
+  width: 260px; height: 260px; right: -70px; top: -40px;
+  border: 1.5px dashed rgba(26,77,128,.28);
+}
+.home-hero::after {
+  width: 150px; height: 150px; left: -40px; bottom: 30px;
+  border: 1.5px dashed rgba(15,92,74,.24);
+  animation-delay: 1.6s;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+/* 「项目」标题下短渐变线 */
+.h2-xl::after {
+  content: "";
+  display: block;
+  width: 52px; height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  border-radius: 2px;
+}
+
+/* 分隔符上色 */
+.orn { color: var(--primary); opacity: .45; font-size: 18px; }
+
+/* 项目卡片：右上角圆环装饰 + 悬停更立体 */
+.proj-card { position: relative; overflow: hidden; }
+.proj-card::after {
+  content: "";
+  position: absolute;
+  width: 130px; height: 130px;
+  right: -46px; top: -46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  opacity: .7;
+  pointer-events: none;
+  transition: transform .35s ease;
+}
+.proj-card:hover::after { transform: scale(1.15); }
+.proj-card:hover { box-shadow: 0 16px 36px rgba(26,77,128,.16); }
