@@ -436,3 +436,6 @@ body {
 }
 .proj-card:hover::after { transform: scale(1.15); }
 .proj-card:hover { box-shadow: 0 16px 36px rgba(26,77,128,.16); }
+
+/* hero 区全宽（装饰铺满屏幕，文字仍居中） */
+.home-hero { max-width: none; }
