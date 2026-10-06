@@ -44,7 +44,7 @@
       if (a) a.classList.add("active");
     });
   }, { rootMargin: "-40% 0px -55% 0px" });
-  ["overview", "demo", "story", "methods", "results", "reflect", "contact"].forEach(function (id) {
+  ["works", "overview", "demo", "story", "methods", "results", "reflect", "contact"].forEach(function (id) {
     var el = $(id);
     if (el) sio.observe(el);
   });
