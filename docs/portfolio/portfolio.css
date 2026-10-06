@@ -313,7 +313,7 @@ a { color: var(--primary); }
 body.pg-haigou { --primary: #0e6b75; --primary-dark: #0a525a; --primary-light: #e9f4f5; }
 
 /* 总站：项目大卡片 */
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; max-width: 1060px; margin: 0 auto; }
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1280px; margin: 0 auto; }
 .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; text-decoration: none; color: var(--text); display: block; box-shadow: 0 2px 10px rgba(26,77,128,.06); transition: transform .25s, box-shadow .25s; }
 .proj-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(26,77,128,.14); }
 .proj-tag { display: inline-block; font-size: 13px; color: var(--primary); background: var(--primary-light); padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
