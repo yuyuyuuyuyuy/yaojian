@@ -338,3 +338,32 @@ body.pg-haigou { --primary: #0e6b75; --primary-dark: #0a525a; --primary-light: #
 .flow-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 980px; margin: 0 auto; }
 .flow-step { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 14px; color: var(--text); }
 .flow-step b { color: var(--primary); margin-right: 6px; }
+
+/* ===== 首页装饰（2026-10 二轮柔和化） ===== */
+
+/* hero 轻渐变背景 */
+.home-hero {
+  background:
+    radial-gradient(1100px 380px at 50% -120px, rgba(26,77,128,.07), transparent 70%),
+    radial-gradient(700px 300px at 88% 18%, rgba(15,92,74,.05), transparent 70%);
+}
+
+/* 分隔装饰 */
+.orn {
+  text-align: center;
+  color: var(--border);
+  font-size: 15px;
+  letter-spacing: .6em;
+  margin-top: -18px;
+}
+
+/* 「项目」大标题 */
+.h2-xl {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  letter-spacing: .12em;
+}
+
+/* 项目卡片顶部彩色描边（一蓝一绿，呼应两个项目页主色） */
+.proj-card { border-top: 3px solid var(--primary); }
+.proj-card:nth-child(2) { border-top-color: #0e6b75; }
