@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>作品集 · 海淘管家 —— 把手工代购生意改造成人机协作系统</title>
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body class="pg-haigou">
+
+<nav id="topnav">
+  <a class="brand" href="index.html"><img class="nav-logo" src="../frontend/assets/logo.png" alt="">作品集</a>
+  <div class="nav-links">
+    <a href="index.html">首页</a>
+    <a href="yaojian.html">药鉴</a>
+    <a href="#overview">速览</a>
+    <a href="#demo">系统展示</a>
+    <a href="#story">决策故事</a>
+    <a href="#methods">方法论</a>
+    <a href="#results">成果</a>
+    <a href="#reflect">反思</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<!-- ① Hero -->
+<header id="hero" class="section">
+  <p class="kicker reveal">HAI TAO GUAN JIA · 多Agent业务协作系统</p>
+  <h1 class="reveal">把一门手工代购生意，改造成<span class="hl">人机协作系统</span></h1>
+  <p class="hero-sub reveal">从自己运营的日韩代购群出发：7 环节流程数字化，8 个 Agent 分工协作，已上线阿里云 ECS 真实运营</p>
+  <div class="hero-tags reveal">
+    <span>真实业务上线</span><span>多Agent协作</span><span>4 天 6 阶段交付</span><span>数据全部可查证</span>
+  </div>
+</header>
+
+<!-- ② 项目速览 -->
+<section id="overview" class="section">
+  <h2 class="reveal">项目速览</h2>
+  <p class="lead reveal">群友填收集表 → 海外下单 → 仓库快照 → 国际物流选线 → 海关 → 国内分包 → 签收，七个环节被改造成一条人机协作的流水线。</p>
+  <div class="flow-row reveal">
+    <div class="flow-step"><b>1</b>收集表导入</div>
+    <div class="flow-step"><b>2</b>商家物流追踪</div>
+    <div class="flow-step"><b>3</b>快照分拣核对</div>
+    <div class="flow-step"><b>4</b>国际物流选线</div>
+    <div class="flow-step"><b>5</b>海关追踪</div>
+    <div class="flow-step"><b>6</b>国内分包</div>
+    <div class="flow-step"><b>7</b>签收同步</div>
+  </div>
+  <div class="stats reveal" style="max-width:1060px;margin:36px auto 0;">
+    <div class="stat"><b data-count="8">0</b><span>个 Agent 分工协作</span></div>
+    <div class="stat"><b data-count="7">0</b><span>条物流线路入知识库</span></div>
+    <div class="stat"><b data-count="779">0</b><span>个价格档位（官方API）</span></div>
+    <div class="stat"><b data-count="78">0</b><span>项自动化测试全过</span></div>
+    <div class="stat"><b data-count="6">0</b><span>个阶段验收制交付</span></div>
+    <div class="stat"><b data-count="2">0</b><span>天主体开发上线</span></div>
+  </div>
+</section>
+
+<!-- ③ 系统展示 -->
+<section id="demo" class="section">
+  <h2 class="reveal">系统展示</h2>
+  <p class="sec-sub reveal">已上线的管理端 13 个页面与群友查询页（截图取自运行中的系统）。</p>
+  <div class="shots-grid reveal">
+    <div class="shot-item"><img src="haigou_1.png" alt="总览仪表盘：今日待办与状态分布"><div class="shot-cap">总览仪表盘：待下单/待核对/待确认/售后中一目了然</div></div>
+    <div class="shot-item"><img src="haigou_2.png" alt="国际物流选择：克重区间方案矩阵"><div class="shot-cap">国际物流选择：按克重区间输出主选+备选方案矩阵</div></div>
+    <div class="shot-item"><img src="haigou_3.png" alt="合寄vs分寄提醒"><div class="shot-cap">合寄 vs 分寄：自动枚举最优分法并提示节省金额</div></div>
+    <div class="shot-item"><img src="haigou_4.png" alt="用户台账：状态卡片与明细"><div class="shot-cap">用户台账：已下单/已发货/商品来源一屏分清</div></div>
+    <div class="shot-item"><img src="haigou_5.png" alt="个人查询页：群友昵称登录只看自己的订单"><div class="shot-cap">群友个人查询：昵称登录，数据隔离只看自己</div></div>
+  </div>
+
+  <h3 class="sub-h reveal">七个环节 × 系统能力</h3>
+  <div class="ver-table reveal" style="max-width:1060px;margin:0 auto;">
+    <div class="ver-row"><div class="ver-tag">收集表</div><div class="ver-title">导入 + AI 查漏</div><div class="ver-desc">列自动识别导入；AI 查漏补缺与风险识别（缺链接/禁运词/数量预警）</div></div>
+    <div class="ver-row"><div class="ver-tag">商家物流</div><div class="ver-title">17TRACK 自动同步</div><div class="ver-desc">自动查轨迹，签收自动转「已到仓」；超期无更新主动预警</div></div>
+    <div class="ver-row"><div class="ver-tag">快照核对</div><div class="ver-title">快照分拣 + 人工核对</div><div class="ver-desc">AI 识别运单号并分拣到用户；商品核对保留人工（群友看图确认）</div></div>
+    <div class="ver-row"><div class="ver-tag">国际选线</div><div class="ver-title">方案矩阵 + 分寄优化</div><div class="ver-desc">克重区间主选/备选方案；枚举全部分法自动找出更省的合寄/分寄组合</div></div>
+    <div class="ver-row"><div class="ver-tag">海关</div><div class="ver-title">异常预警 + 售后翻译</div><div class="ver-desc">清关/退回等异常词自动预警；售后自动生成日/韩文沟通文案</div></div>
+    <div class="ver-row"><div class="ver-tag">国内分包</div><div class="ver-title">打包清单 + 发货三连</div><div class="ver-desc">按用户生成打包清单（克重/易碎标识）；发货一键建包裹/改状态/生成通知</div></div>
+    <div class="ver-row"><div class="ver-tag">签收同步</div><div class="ver-title">状态机自动流转</div><div class="ver-desc">国内段签收自动转「已签收」；群友昵称登录随时自查进度</div></div>
+  </div>
+</section>
+
+<!-- ④ 决策故事 -->
+<section id="story" class="section">
+  <h2 class="reveal">0→1 决策故事</h2>
+  <p class="sec-sub reveal">我为什么这样做</p>
+
+  <div class="timeline reveal" id="timeline">
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：自己生意里的七个环节，全靠人工</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>我运营着一个日韩代购私人群。每一单要经历七个环节：收集表下单、海外平台下单、追商家物流、仓库快照核对、选国际物流、盯海关、国内分包发货。每一单都要手工比对多家物流商价格，物流状态靠刷快递网站，群友催问要翻记录回复——<b>痛点不是想出来的，是每天在发生的</b>。</p>
+        <p>问题被拆成两类：能规则化的（查价、追物流、状态记录）交给系统；必须人做的（下单、核对、拍板）保留给人。这就是整个系统的原点。</p>
+        <a class="t-link" href="../haigou/README.md" target="_blank">📄 证据：项目说明（7 环节流程与系统结构）</a>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">02</span><span class="t-title">业务数字化：先把流程变成状态机</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>第一步不是写功能，是建模型：订单状态机（待下单→已下单→已到仓→已发国际→已到国内→已发国内→已签收，异议则进售后），并设计了三处<b>签收自动联动</b>——包裹轨迹出现「已签收」，订单状态自动推进。最琐碎的状态维护被完全自动化，人只处理例外。</p>
+        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank">📄 证据：部署记录（含全部功能与流程说明）</a>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">03</span><span class="t-title">多Agent设计：八个 Agent，各司其职</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>系统拆成 8 个 Agent：1 个主控（统一调度、运行日志）+ 7 个专职（订单解析、用户台账、国际物流选择、物流追踪、快照分拣、用户确认&售后、国内分包）。设计原则只有三条：<b>职责单一</b>（一个 Agent 只做一类事，出错好定位）；<b>失败隔离</b>（一个环节失败不阻塞整条流程）；<b>数据库共享状态</b>（Agent 之间不互相传话，一切可回溯）。</p>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">04</span><span class="t-title">人机分工：把「信任」留给人的边界设计</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>哪些环节交给 AI，是我最谨慎的决策：<b>商品核对保留人工</b>——AI 只识别快照上的运单号并分拣到用户（快照分拣Agent），「东西对不对」由群友看图人工确认，规避视觉误判风险；<b>物流选线 AI 推荐 + 人工拍板</b>（价格之外的因素人判断）；<b>话术 AI 生成 + 人工转发</b>（不碰个人号自动化红线）。</p>
+        <p>这个边界不是一步想对的：初版设计了「商品图 zip 自动匹配 + AI 视觉核对」，被真实使用否决——导出压缩包太麻烦、且核对结果必须人说了算。当天就重构为人工核对 + AI 分拣，<b>被使用推翻的方案比完美方案更值钱</b>。</p>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">05</span><span class="t-title">核心算法：把「估价」做成区间决策</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>国际物流选线是全系统最重的决策，我做了三件事：<b>①克重区间方案矩阵</b>——打包后克重与入库时差异大，单点估价不可靠，就按区间切档（≤2kg 按 0.5kg），每档给主选+备选，价格按区间上限保守估算；<b>②合寄 vs 分寄枚举优化</b>——枚举全部商品分组方式，把禁运词、数量上限（纸飞机系≤30个）、免税额度（书10本/CD20盘，超额按13%估税）作为约束和成本参与计算，分寄更省自动提醒；<b>③净重估算链</b>——入库克重扣 15% 外包装估净重，再加回新包装估重，最终按 ±10% 区间分析。</p>
+        <p>七条线路 779 个价格档位全部从官方 API 抓取入库，规则文本可维护可更新。</p>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <button class="t-head"><span class="t-no">06</span><span class="t-title">交付与上线：六阶段验收制，两天上线运营</span><span class="t-arrow">▾</span></button>
+      <div class="t-body">
+        <p>按 P0~P6 六阶段推进，<b>每个阶段用户验收通过才做下一阶段</b>：导入与解析→台账→物流选择→物流追踪→快照与售后→分包与话术→查询端上线。每阶段交付自动化测试全绿 + 真实数据验收 + git 留痕。</p>
+        <p>上线不是终点：部署阿里云 ECS（systemd 自启 + 每日凌晨备份 + 部署全程留痕），7 位真实群友数据已接入，群友用昵称就能查自己的订单。运营数据正在积累中。</p>
+        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank">📄 证据：部署全程记录（勘察→快照→上线→维护手册）</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 方法论 -->
+<section id="methods" class="section">
+  <h2 class="reveal">方法论工具箱</h2>
+  <p class="sec-sub reveal">每一个都在海淘管家里真刀真枪用过。点击卡片看实例。</p>
+  <div class="method-grid reveal">
+    <div class="m-card"><button class="m-front"><span class="m-ic">🧩</span>业务流程数字化<span class="hint">点击看实例</span></button><div class="m-back">7 环节人工流程 → 状态机建模 + 3 处签收自动联动，最琐碎的状态维护完全自动化。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic">🤖</span>多Agent职责划分<span class="hint">点击看实例</span></button><div class="m-back">1 主控 + 7 专职：职责单一、失败隔离、数据库共享状态——出错可定位，单点不拖垮全局。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic">🤝</span>人机分工边界<span class="hint">点击看实例</span></button><div class="m-back">商品核对、方案拍板、话术转发保留人工；AI 只做分拣、推荐与生成——信任场景人说了算。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic">🪜</span>阶段验收制交付<span class="hint">点击看实例</span></button><div class="m-back">P0~P6 每阶段验收才继续：78 项自动化测试全绿 + 真实数据验收 + git 留痕，23 个提交可回溯。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic">🛡</span>降级设计<span class="hint">点击看实例</span></button><div class="m-back">无 API Key / 接口失败自动降级（未配视觉模型→手动输单号），AI 不可用时系统依然完整可用。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic">📚</span>规则知识库<span class="hint">点击看实例</span></button><div class="m-back">7 条物流线路 779 档价格 + 禁运/免税/申报规则全部结构化入库，价格计算零 API 消耗，规则可维护可更新。</div></div>
+  </div>
+</section>
+
+<!-- ⑥ 成果 -->
+<section id="results" class="section">
+  <h2 class="reveal">成果与数据</h2>
+
+  <h3 class="sub-h reveal">数字速查（全部可查证）</h3>
+  <div class="ver-table reveal" style="max-width:860px;margin:0 auto;">
+    <div class="ver-row"><div class="ver-tag">8</div><div class="ver-title">个 Agent（1 主控+7 专职）</div><div class="ver-desc">agents/ 目录，各司其职、失败隔离</div></div>
+    <div class="ver-row"><div class="ver-tag">7 / 779</div><div class="ver-title">线路 / 价格档位</div><div class="ver-desc">乐一番官方 API 抓取入库（含阶梯计费/禁运/免税规则）</div></div>
+    <div class="ver-row"><div class="ver-tag">78</div><div class="ver-title">项自动化测试</div><div class="ver-desc">覆盖导入/台账/物流选择/追踪/分拣/售后全链路，全通过</div></div>
+    <div class="ver-row"><div class="ver-tag">23</div><div class="ver-title">个 git 提交 / P0~P6</div><div class="ver-desc">六阶段验收制，每阶段测试全绿 + 真实数据验收</div></div>
+    <div class="ver-row"><div class="ver-tag">13+1</div><div class="ver-title">管理端页面 + 群友查询页</div><div class="ver-desc">Streamlit 多页应用，角色权限分离</div></div>
+    <div class="ver-row"><div class="ver-tag">4266</div><div class="ver-title">行业务代码</div><div class="ver-desc">Python（含测试共 5501 行），分层架构可维护</div></div>
+  </div>
+
+  <h3 class="sub-h reveal">上线状态</h3>
+  <div class="data-slots reveal" style="max-width:860px;margin:0 auto;">
+    <div class="data-slot"><div class="ds-label">🚀 部署</div><div class="ds-body">阿里云 Ubuntu ECS，systemd 自启 + 崩溃自动重启，安全组最小放行</div></div>
+    <div class="data-slot"><div class="ds-label">💾 数据安全</div><div class="ds-body">每日凌晨 3 点自动备份（数据库+上传文件，保留 7 天），部署全程留痕</div></div>
+    <div class="data-slot"><div class="ds-label">👥 真实使用</div><div class="ds-body">7 位真实群友数据已接入，昵称自助查询已开通，运营数据积累中</div></div>
+  </div>
+</section>
+
+<!-- ⑦ 反思 -->
+<section id="reflect" class="section">
+  <h2 class="reveal">如果重来</h2>
+  <div class="reflect-grid reveal">
+    <div class="r-card"><b>① 先拿真实样例，再定导入规则。</b><p>收集表解析和图片匹配的规则，我用模拟数据先做了「通用版」，真实收集表到货后仍需校准。如果重来，第一件事是拿一份真实导出样例把规则钉死。</p></div>
+    <div class="r-card"><b>② 产品文案要站在用户视角。</b><p>台账卡片曾写「国外发货」，用户一眼看出与「未下单」矛盾——它的本意是「商品来源海外」。改名为「海外商品」才消除歧义：标签要描述事实，不能造成状态误解。</p></div>
+    <div class="r-card"><b>③ 被使用推翻的方案是资产。</b><p>「图片 zip 自动匹配 + AI 视觉核对」被真实使用一天内否决并重构为人工核对。快速上线、被真实使用推翻、再重构，比闭门打磨完美方案更接近真相。</p></div>
+  </div>
+</section>
+
+<!-- ⑧ 联系 -->
+<footer id="contact" class="section">
+  <h2 class="reveal">联系我</h2>
+  <div class="contact-links reveal">
+    <a class="link-chip" id="c-email" href="mailto:18607995476@163.com">✉️ 邮箱：18607995476@163.com</a>
+    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">💻 GitHub：yuyuyuuyuyuy/yaojian</a>
+    <a class="link-chip" href="个人简历.pdf" target="_blank">📄 简历 PDF</a>
+  </div>
+  <p class="foot-note reveal">海淘管家（HaiTao GuanJia）· 个人业务数字化实践 · 项目数据均可查证</p>
+</footer>
+
+<script src="portfolio.js"></script>
+</body>
+</html>
