@@ -130,6 +130,7 @@
       var i = 0, text = d.a;
       var finish = function () {
         if (typingTimer) { clearInterval(typingTimer); typingTimer = null; }
+        bEl.classList.remove("typing");
         bEl.innerHTML = badgeHtml(text);
         bEl.querySelectorAll(".cite").forEach(function (c) {
           c.setAttribute("role", "button");
@@ -149,6 +150,7 @@
       // 点击回答立即显示完整内容（评审修复：打字动画可跳过）
       aEl.addEventListener("click", function () { if (typingTimer) finish(); });
       if (REDUCED) { finish(); return; }
+      bEl.classList.add("typing");
       typingTimer = setInterval(function () {
         i += 2;
         bEl.textContent = text.slice(0, i);
@@ -298,6 +300,8 @@
       btn.setAttribute("aria-pressed", "true");
       var p = flowDetail.querySelector("p");
       if (p) p.textContent = btn.dataset.desc || "";
+      flowDetail.style.opacity = 0;
+      setTimeout(function () { flowDetail.style.opacity = 1; }, 60);
     }
     flowSteps.forEach(function (b) {
       b.addEventListener("click", function () { selectFlow(b); });

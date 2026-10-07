@@ -410,17 +410,32 @@ body.pg-home .hero-sub { font-size: 17px; }
   border-radius: var(--r-sm) var(--r-md) var(--r-md) var(--r-sm); padding: 16px 20px;
   font-size: var(--fs-body); color: var(--text); white-space: pre-wrap; overflow-wrap: break-word;
 }
+/* delight：流式生成光标（打字期间闪烁，完成即消失——还原 APP 真实生成手感） */
+.msg-a.typing::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--primary);
+  animation: caretBlink .8s steps(1) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
 .msg-a .cite {
   display: inline-block; background: var(--primary); color: #fff;
   border-radius: var(--r-sm); padding: 2px 8px; margin: 0 4px; font-size: var(--fs-meta);
-  font-weight: 700; cursor: pointer; vertical-align: 1px; transition: background-color .15s;
+  font-weight: 700; cursor: pointer; vertical-align: 1px;
+  transition: background-color .15s, transform .1s;
 }
 .msg-a .cite:hover { background: var(--primary-dark); }
+/* delight：引用徽章按压手感（核对原文的动作反馈） */
+.msg-a .cite:active { transform: scale(.94); }
 .demo-sources .src-card {
   background: #f8f9fb; border: 1px solid var(--border); border-left: 3px solid var(--primary);
   border-radius: var(--r-sm) var(--r-md) var(--r-md) var(--r-sm); padding: 16px 20px;
   margin: 0 0 12px 20px; font-size: var(--fs-body); color: var(--text); animation: fadeIn .3s ease;
+  transition: background-color .3s ease;
 }
+/* delight：来源卡核对高亮时轻微闪入 */
+.demo-sources .src-card.hl { animation: srcIn .4s ease; }
+@keyframes srcIn { from { transform: translateX(6px); opacity: .5; } to { transform: none; opacity: 1; } }
 .demo-sources .src-meta { color: var(--text-2); font-size: var(--fs-meta); margin-top: 4px; }
 .demo-sources .src-card.hl { background: var(--primary-light); }
 .demo-note { color: var(--text-2); font-size: var(--fs-meta); margin-top: 8px; }
@@ -454,6 +469,7 @@ body.pg-home .hero-sub { font-size: 17px; }
   max-width: 720px; margin: 16px auto 0; background: var(--card);
   border: 1px solid var(--border); border-radius: var(--r-md);
   padding: 16px 20px; font-size: var(--fs-body); color: var(--text); box-shadow: var(--sh-1);
+  transition: opacity .2s;
 }
 
 /* ---------- 14. 联系 ---------- */
@@ -530,6 +546,6 @@ body.pg-home .hero-sub { font-size: 17px; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .t-body, .t-arrow, .m-front, .m-back, .to-top, .proj-card, .msg,
-  .stat, .go-arrow, .flow-step, .flow-step b, #topnav { transition: none; animation: none; }
+  .stat, .go-arrow, .flow-step, .flow-step b, #topnav, .src-card, .msg-a.typing::after { transition: none; animation: none; }
   .section h2::after { transform: translateX(-50%) scaleX(1); transition: none; }
 }
