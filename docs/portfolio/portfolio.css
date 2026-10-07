@@ -4,6 +4,7 @@
    双主色：药典蓝（首页/药鉴）· 海绿（海淘管家）
    字阶：6 档令牌化（Display 40 / Title 26 / Subhead 18 / Data 30 / Body 15 / Meta 13）
    间距：4 单位刻度（4/8/12/16/20/24/28/32/36/44/64/88；豁免=1px 边线、2px 徽章微距、3px 侧边条）
+   暗色模式：有意不建（双主色浅色世界，目标读者为白天浏览的招聘方）
    ================================================================ */
 
 /* ---------- 1. Design Tokens ---------- */
@@ -380,7 +381,9 @@ body.pg-home .hero-sub { font-size: 17px; }
   border: 1px solid var(--border); background: var(--bg); transition: opacity .12s ease;
 }
 .gal-cap {
-  position: absolute; left: 12px; bottom: 12px; background: rgba(26,77,128,.85);
+  position: absolute; left: 12px; bottom: 12px;
+  background: rgba(26,77,128,.85); /* 旧浏览器回退（与 --primary 同源） */
+  background: color-mix(in srgb, var(--primary) 85%, transparent);
   color: #fff; font-size: var(--fs-meta); padding: 4px 12px; border-radius: var(--r-full);
 }
 .gal-arrow { flex: 0 0 36px; height: 36px; }

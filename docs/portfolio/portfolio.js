@@ -204,7 +204,21 @@
 
   /* ---------- 6. 方法论翻卡 ---------- */
   document.querySelectorAll(".m-card").forEach(function (c) {
-    c.addEventListener("click", function () { c.classList.toggle("flipped"); });
+    var front = c.querySelector(".m-front");
+    var back = c.querySelector(".m-back");
+    function syncFlip() {
+      var flipped = c.classList.contains("flipped");
+      if (front) front.setAttribute("aria-pressed", flipped ? "true" : "false");
+      if (back) {
+        back.setAttribute("aria-hidden", flipped ? "false" : "true");
+        back.inert = !flipped;
+      }
+    }
+    c.addEventListener("click", function () {
+      c.classList.toggle("flipped");
+      syncFlip();
+    });
+    syncFlip();
   });
 
   /* ---------- 7. 核心功能横滑（仅药鉴页；选中卡 → 详情面板；箭头翻页） ---------- */
