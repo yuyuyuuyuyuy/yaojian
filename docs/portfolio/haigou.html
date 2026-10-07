@@ -26,10 +26,10 @@
 <!-- ① Hero -->
 <header id="hero" class="section">
   <p class="kicker reveal">HAI TAO GUAN JIA · 多Agent业务协作系统</p>
-  <h1 class="reveal">把一门手工代购生意，改造成<span class="hl">人机协作系统</span></h1>
+  <h1 class="reveal">把一门<span class="hl-soft">代购业务</span>，改造成<span class="hl">人机协作系统</span></h1>
   <p class="hero-sub reveal">从自己运营的日韩代购群出发：7 环节流程数字化，8 个 Agent 分工协作，已上线阿里云 ECS 真实运营</p>
   <div class="hero-tags reveal">
-    <span>真实业务上线</span><span>多Agent协作</span><span>4 天 6 阶段交付</span><span>数据全部可查证</span>
+    <span>真实业务上线</span><span>多Agent协作</span><span>七环节流程数字化</span><span>状态自动流转</span>
   </div>
 </header>
 
@@ -52,7 +52,6 @@
     <div class="stat"><b data-count="779">0</b><span>个价格档位（官方API）</span></div>
     <div class="stat"><b data-count="78">0</b><span>项自动化测试全过</span></div>
     <div class="stat"><b data-count="6">0</b><span>个阶段验收制交付</span></div>
-    <div class="stat"><b data-count="2">0</b><span>天主体开发上线</span></div>
   </div>
 </section>
 
@@ -74,8 +73,8 @@
     <div class="ver-row"><div class="ver-tag">商家物流</div><div class="ver-title">17TRACK 自动同步</div><div class="ver-desc">自动查轨迹，签收自动转「已到仓」；超期无更新主动预警</div></div>
     <div class="ver-row"><div class="ver-tag">快照核对</div><div class="ver-title">快照分拣 + 人工核对</div><div class="ver-desc">AI 识别运单号并分拣到用户；商品核对保留人工（群友看图确认）</div></div>
     <div class="ver-row"><div class="ver-tag">国际选线</div><div class="ver-title">方案矩阵 + 分寄优化</div><div class="ver-desc">克重区间主选/备选方案；枚举全部分法自动找出更省的合寄/分寄组合</div></div>
-    <div class="ver-row"><div class="ver-tag">海关</div><div class="ver-title">异常预警 + 售后翻译</div><div class="ver-desc">清关/退回等异常词自动预警；售后自动生成日/韩文沟通文案</div></div>
-    <div class="ver-row"><div class="ver-tag">国内分包</div><div class="ver-title">打包清单 + 发货三连</div><div class="ver-desc">按用户生成打包清单（克重/易碎标识）；发货一键建包裹/改状态/生成通知</div></div>
+    <div class="ver-row"><div class="ver-tag">海关</div><div class="ver-title">异常预警</div><div class="ver-desc">清关/退回等异常词自动预警，及时人工处置</div></div>
+    <div class="ver-row"><div class="ver-tag">国内分包</div><div class="ver-title">打包清单 + 发货三连</div><div class="ver-desc">按用户生成打包清单；发货一键建包裹/改状态/生成通知</div></div>
     <div class="ver-row"><div class="ver-tag">签收同步</div><div class="ver-title">状态机自动流转</div><div class="ver-desc">国内段签收自动转「已签收」；群友昵称登录随时自查进度</div></div>
   </div>
 </section>
@@ -89,7 +88,7 @@
     <div class="t-card">
       <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：自己生意里的七个环节，全靠人工</span><span class="t-arrow">▾</span></button>
       <div class="t-body">
-        <p>我运营着一个日韩代购私人群。每一单要经历七个环节：收集表下单、海外平台下单、追商家物流、仓库快照核对、选国际物流、盯海关、国内分包发货。每一单都要手工比对多家物流商价格，物流状态靠刷快递网站，群友催问要翻记录回复——<b>痛点不是想出来的，是每天在发生的</b>。</p>
+        <p>我运营着一个日韩代购私人群。每一单要经历七个环节：收集表下单、海外平台下单、追商家物流、仓库快照核对、选国际物流、盯海关、国内分包发货。国际运输要手工对比多家物流商细则，物流状态要刷多个网站查询，群友催问要翻记录回复——<b>痛点不是想出来的，是每天在发生的</b>。</p>
         <p>问题被拆成两类：能规则化的（查价、追物流、状态记录）交给系统；必须人做的（下单、核对、拍板）保留给人。这就是整个系统的原点。</p>
         <a class="t-link" href="../haigou/README.md" target="_blank">📄 证据：项目说明（7 环节流程与系统结构）</a>
       </div>
@@ -114,14 +113,14 @@
       <button class="t-head"><span class="t-no">04</span><span class="t-title">人机分工：把「信任」留给人的边界设计</span><span class="t-arrow">▾</span></button>
       <div class="t-body">
         <p>哪些环节交给 AI，是我最谨慎的决策：<b>商品核对保留人工</b>——AI 只识别快照上的运单号并分拣到用户（快照分拣Agent），「东西对不对」由群友看图人工确认，规避视觉误判风险；<b>物流选线 AI 推荐 + 人工拍板</b>（价格之外的因素人判断）；<b>话术 AI 生成 + 人工转发</b>（不碰个人号自动化红线）。</p>
-        <p>这个边界不是一步想对的：初版设计了「商品图 zip 自动匹配 + AI 视觉核对」，被真实使用否决——导出压缩包太麻烦、且核对结果必须人说了算。当天就重构为人工核对 + AI 分拣，<b>被使用推翻的方案比完美方案更值钱</b>。</p>
+        <p>这个边界不是一步想对的：初版设计了「商品图 zip 自动匹配 + AI 视觉核对」，被真实使用否决——导出压缩包太麻烦、且核对结果必须人说了算。当天就重构为人工核对 + AI 分拣，<b>一个被真实使用推翻的方案，比闭门造出的完美方案更接近真相</b>。</p>
       </div>
     </div>
 
     <div class="t-card">
       <button class="t-head"><span class="t-no">05</span><span class="t-title">核心算法：把「估价」做成区间决策</span><span class="t-arrow">▾</span></button>
       <div class="t-body">
-        <p>国际物流选线是全系统最重的决策，我做了三件事：<b>①克重区间方案矩阵</b>——打包后克重与入库时差异大，单点估价不可靠，就按区间切档（≤2kg 按 0.5kg），每档给主选+备选，价格按区间上限保守估算；<b>②合寄 vs 分寄枚举优化</b>——枚举全部商品分组方式，把禁运词、数量上限（纸飞机系≤30个）、免税额度（书10本/CD20盘，超额按13%估税）作为约束和成本参与计算，分寄更省自动提醒；<b>③净重估算链</b>——入库克重扣 15% 外包装估净重，再加回新包装估重，最终按 ±10% 区间分析。</p>
+        <p>国际物流选线是全系统最重的决策，我做了三件事：<b>①克重区间方案矩阵</b>——打包后克重与入库时差异大，单点估价不可靠，就按区间切档（≤2kg 按 0.5kg），每档给主选+备选，价格按区间上限保守估算；<b>②合寄 vs 分寄枚举优化</b>——枚举全部商品分组方式，把禁运词、数量上限、免税额度（书10本/CD20盘，超额按13%估税）作为约束和成本参与计算，分寄更省自动提醒；<b>③净重估算链</b>——入库克重扣 15% 外包装估净重，再加回新包装估重，最终按 ±10% 区间分析。</p>
         <p>七条线路 779 个价格档位全部从官方 API 抓取入库，规则文本可维护可更新。</p>
       </div>
     </div>
@@ -129,8 +128,8 @@
     <div class="t-card">
       <button class="t-head"><span class="t-no">06</span><span class="t-title">交付与上线：六阶段验收制，两天上线运营</span><span class="t-arrow">▾</span></button>
       <div class="t-body">
-        <p>按 P0~P6 六阶段推进，<b>每个阶段用户验收通过才做下一阶段</b>：导入与解析→台账→物流选择→物流追踪→快照与售后→分包与话术→查询端上线。每阶段交付自动化测试全绿 + 真实数据验收 + git 留痕。</p>
-        <p>上线不是终点：部署阿里云 ECS（systemd 自启 + 每日凌晨备份 + 部署全程留痕），7 位真实群友数据已接入，群友用昵称就能查自己的订单。运营数据正在积累中。</p>
+        <p>按 P0~P6 六阶段推进，<b>每个阶段验收通过才做下一阶段</b>：导入与解析→台账→物流选择→物流追踪→快照与售后→分包与话术→查询端上线。每阶段交付自动化测试全绿 + 真实数据验收 + git 留痕。</p>
+        <p>上线不是终点：部署阿里云 ECS（systemd 自启 + 每日凌晨备份 + 部署全程留痕），群友用昵称就能查自己的订单。运营数据正在积累中。</p>
         <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank">📄 证据：部署全程记录（勘察→快照→上线→维护手册）</a>
       </div>
     </div>
@@ -158,18 +157,17 @@
   <h3 class="sub-h reveal">数字速查（全部可查证）</h3>
   <div class="ver-table reveal" style="max-width:860px;margin:0 auto;">
     <div class="ver-row"><div class="ver-tag">8</div><div class="ver-title">个 Agent（1 主控+7 专职）</div><div class="ver-desc">agents/ 目录，各司其职、失败隔离</div></div>
-    <div class="ver-row"><div class="ver-tag">7 / 779</div><div class="ver-title">线路 / 价格档位</div><div class="ver-desc">乐一番官方 API 抓取入库（含阶梯计费/禁运/免税规则）</div></div>
+    <div class="ver-row"><div class="ver-tag">7 / 779</div><div class="ver-title">线路 / 价格档位</div><div class="ver-desc">国际运输官方 API 抓取入库（含阶梯计费/禁运/免税规则）</div></div>
     <div class="ver-row"><div class="ver-tag">78</div><div class="ver-title">项自动化测试</div><div class="ver-desc">覆盖导入/台账/物流选择/追踪/分拣/售后全链路，全通过</div></div>
     <div class="ver-row"><div class="ver-tag">23</div><div class="ver-title">个 git 提交 / P0~P6</div><div class="ver-desc">六阶段验收制，每阶段测试全绿 + 真实数据验收</div></div>
     <div class="ver-row"><div class="ver-tag">13+1</div><div class="ver-title">管理端页面 + 群友查询页</div><div class="ver-desc">Streamlit 多页应用，角色权限分离</div></div>
-    <div class="ver-row"><div class="ver-tag">4266</div><div class="ver-title">行业务代码</div><div class="ver-desc">Python（含测试共 5501 行），分层架构可维护</div></div>
   </div>
 
   <h3 class="sub-h reveal">上线状态</h3>
   <div class="data-slots reveal" style="max-width:860px;margin:0 auto;">
     <div class="data-slot"><div class="ds-label">🚀 部署</div><div class="ds-body">阿里云 Ubuntu ECS，systemd 自启 + 崩溃自动重启，安全组最小放行</div></div>
     <div class="data-slot"><div class="ds-label">💾 数据安全</div><div class="ds-body">每日凌晨 3 点自动备份（数据库+上传文件，保留 7 天），部署全程留痕</div></div>
-    <div class="data-slot"><div class="ds-label">👥 真实使用</div><div class="ds-body">7 位真实群友数据已接入，昵称自助查询已开通，运营数据积累中</div></div>
+    <div class="data-slot"><div class="ds-label">👥 真实使用</div><div class="ds-body">昵称自助查询已开通，运营数据积累中</div></div>
   </div>
 </section>
 

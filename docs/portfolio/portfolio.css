@@ -439,3 +439,6 @@ body {
 
 /* hero 区全宽（装饰铺满屏幕，文字仍居中） */
 .home-hero { max-width: none; }
+
+/* 海淘管家页标题第二强调色（用户要求字体颜色有变化） */
+.hl-soft { color: var(--accent); }
