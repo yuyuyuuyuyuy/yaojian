@@ -490,6 +490,24 @@ body.pg-home .hero-sub { font-size: 17px; }
 .to-top.show { opacity: 1; visibility: visible; transform: none; }
 .to-top:hover { background: var(--primary-dark); }
 
+/* ---------- 15.5 overdrive：项目卡→项目页共享元素过渡 ---------- */
+/* 仅支持的浏览器生效（Chrome/Edge/Safari 跨文档）；未知 at-rule 自动忽略=普通跳转，零损失 */
+@view-transition { navigation: auto; }
+.vt-yaojian { view-transition-name: proj-yaojian; }
+.vt-haigou { view-transition-name: proj-haigou; }
+.vt-hero-yaojian { view-transition-name: proj-yaojian; }
+.vt-hero-haigou { view-transition-name: proj-haigou; }
+/* 过渡期间：新页内容立即可见（hero 的 reveal 渐入不与变形叠加） */
+html:active-view-transition .reveal { opacity: 1; transform: none; transition: none; }
+/* 卡片「长成」页面：比默认 crossfade 更长的弹性变形曲线 */
+::view-transition-group(proj-yaojian),
+::view-transition-group(proj-haigou) {
+  animation-duration: .45s;
+  animation-timing-function: cubic-bezier(.22, .9, .36, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: .3s; }
+
 /* ---------- 16. 滚动浮现 ---------- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -547,5 +565,6 @@ body.pg-home .hero-sub { font-size: 17px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .t-body, .t-arrow, .m-front, .m-back, .to-top, .proj-card, .msg,
   .stat, .go-arrow, .flow-step, .flow-step b, #topnav, .src-card, .msg-a.typing::after { transition: none; animation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
   .section h2::after { transform: translateX(-50%) scaleX(1); transition: none; }
 }
