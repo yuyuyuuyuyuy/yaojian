@@ -261,6 +261,15 @@
     });
   }
 
+  /* ---------- 9.5 导航滚动阴影（A4） ---------- */
+  if (topnav) {
+    var onNavScroll = function () {
+      topnav.classList.toggle("scrolled", window.scrollY > 40);
+    };
+    window.addEventListener("scroll", onNavScroll, { passive: true });
+    onNavScroll();
+  }
+
   /* ---------- 10. 返回顶部 ---------- */
   var toTop = $("to-top");
   if (toTop) {
