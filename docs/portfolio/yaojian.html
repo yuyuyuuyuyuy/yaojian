@@ -139,7 +139,6 @@
       <div class="t-body">
         <p>药学背景的学习与实习中，我接触到 QC 检验的日常：检验操作规程散落在药典通则里，查条款要翻半天；问通用 AI，答案头头是道——但<b>没有出处，不敢信</b>。高合规场景里，「答得像」一文不值，「答得对且可核对」才值钱。</p>
         <p>于是有了最初的想法：<b>限定语料＋强制引用</b>的可信问答。这是药鉴一切设计的原点——后来的引用徽章、拒答铁律、金标评测，都是这句话的工程化。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/机会评估与立项.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：机会评估与立项</a>
       </div>
     </div>
 
@@ -148,7 +147,6 @@
       <div class="t-body">
         <p>想法要落地，先选路。我对比了五条技术路线：云平台扣子、桌面软件 Cherry Studio、自托管 Dify、自研网页应用、本地模型。按「引用展示质量 × 分发成本 × 维护成本」选型：先用 Dify 自托管跑通（建 10 大类药典语料库，20 题验收通过），随后看清瓶颈——部署要服务器与 ICP 备案、分发靠链接，离「打开就用」很远。</p>
         <p>于是决定做<b>桌面 APP</b>：零服务器、零备案、解压即用。这个决策同时决定了隐私卖点（数据全本机）与成本结构（无运维）。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/技术架构评审.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：技术架构评审</a>
       </div>
     </div>
 
@@ -157,7 +155,6 @@
       <div class="t-body">
         <p>最先让我动摇的，是两条现实：个人开发者做的产品很难触达公司里的 QC 人员——那意味着审批、采购和漫长的信任链条；而我自己，也正在被 AI 随口回答困扰——问个知识点，它答得头头是道，出处却无处可查。于是我意识到：需要「可信答案」的人，不只是实验室里的检验员，还有图书馆里的我自己。</p>
         <p>我决定把目标用户从 QC 检验员转向药学学生——改名（实验室助手→药鉴）、砍掉 QC 主线、新增笔记/卡片/考研场景等学习功能。回头再用竞品分析验证这个转向：通用 AI 已能满足基础问答，「本地私有」对大学生吸引力有限，真正的空白是<b>「可信引用 × 学习闭环 × 垂直语料」</b>的组合——转向的方向，恰好站在了空白上。这是产品最重要的一次 pivot：不是放弃「信任」，而是把它带到信任需求更痛的人群里。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/市场与竞品分析.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：市场与竞品分析</a>
       </div>
     </div>
 
@@ -166,7 +163,6 @@
       <div class="t-body">
         <p>我曾预判「用户用口语提问会检索不到」是个大问题，甚至计划为此开发「问题改写」模块。按可证伪性原则设计了 H5 实验：两条知识库、50 个口语化查询实测——<b>漏检率 0%</b>，假设被证伪，改写模块的开发成本直接省下。</p>
         <p>这件事教会我：直觉假设必须用最小成本的实验检验，而不是直接写进需求池。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求调研文档.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：需求调研文档（H5 章节）</a>
       </div>
     </div>
 
@@ -175,7 +171,6 @@
       <div class="t-body">
         <p>用 KANO＋RICE 给全部需求分级。排序完成后，我又做了一轮批判性复检，纠正了自己两处分类：「口语化理解」应是基本型（所有通用 AI 都会，做不好=不合格）；「笔记付费」没有付费点、应为期望型。</p>
         <p>这次纠错让我明白：<b>KANO 类型由用户感知决定，不由付费点决定</b>。需求分级的价值不在表格，而在这些修正里——它暴露了我对用户心智的误判。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求分级.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：需求分级</a>
       </div>
     </div>
 
@@ -184,7 +179,6 @@
       <div class="t-body">
         <p>PRD 初稿完成后，我先后组织了 4 轮对抗式评审——每一轮都带着「这个需求真的必要吗？验收标准可测吗？」去挑刺，累计提出并落实 28+ 处修改：防积压（每日卡片上限）、考研场景包、动态生成笔记模块、增量索引三行为约定、弱相关只答相关部分、误删保护、公式保真、出题成本闸门……</p>
         <p>PRD 不是写出来的，是审出来的。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/产品需求文档PRD.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：产品需求文档 PRD</a>
       </div>
     </div>
 
@@ -193,7 +187,6 @@
       <div class="t-body">
         <p>「可信」不能靠口号。我提出「可信必须可回归验证」的要求，落地成金标评测体系：25 道题（20 单题＋3 组追问＋2 拒答）三关自动评分——引用溯源、要点覆盖（LLM 裁判）、拒答完整性；每次对话管线变更跑回归对比，防能力退化；还设计了裁判公正性设防（20% 人工抽查）。</p>
         <p>结果：连续多轮 25/25、退化 0。可信从形容词变成了可回归的工程事实。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：质量体系与评测设计</a>
       </div>
     </div>
 
@@ -202,7 +195,6 @@
       <div class="t-body">
         <p>内部验收（Dogfooding）中，我按验收剧本实测自己的产品，抓出 7 个问题，含 1 个 P0：导入无文字层 PDF 时没有失败提示，会误导用户以为导入成功。发布后我又抓到 3 个隐藏 bug：拒答只回一句不带建议、考点分析对 docx/pdf 失效（读到的是乱码）、笔记接口响应缺状态字段导致选笔记视图必现报错。</p>
         <p>每一个都做了根因定位（含实验复现）、修复、回归、决策记录四步闭环。第 3 个 bug 也让我立了条规矩：冒烟测试必须验证<b>响应契约</b>，不能只看 HTTP 200。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/内部验收方案.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：内部验收方案</a>
       </div>
     </div>
 
@@ -211,7 +203,6 @@
       <div class="t-body">
         <p>标准先行：H1~H11 假设判定表＋PMF 量化门槛（核心假设全过＋H8 付费意愿≥50%＋Sean Ellis 40% 失望问题）。计划招募药学本科生 5 名＋考研考生 5~8 名，按 17 步任务脚本实测并回收问卷。</p>
         <p class="t-data-pending">【数据待回填：招募进度 / 任务完成率 / 问卷回收】</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/用户测试计划.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：用户测试计划</a>
       </div>
     </div>
 
@@ -219,7 +210,6 @@
       <button class="t-head"><span class="t-no">10</span><span class="t-title">下一步：用数据决定产品命运</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>按 PMF 判定标准做 GO / Pivot / 止损的三选一；通过则推进 Mac 版与「考得上」出题功能。无论结果如何，判定过程和依据都会记录在案——<b>用数据决策，而不是用希望决策</b>。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/PMF判定标准.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：PMF 判定标准</a>
       </div>
     </div>
   </div>
@@ -256,7 +246,6 @@
   <h3 class="sub-h reveal">评测报告</h3>
   <div class="result-note reveal">
     金标评测连续多轮 <b>25/25 通过、退化 0</b>（引用溯源 / 要点覆盖 / 拒答完整性三关自动评分）。
-    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>查看评测体系设计</a>
   </div>
 
   <h3 class="sub-h reveal">真实用户测试数据</h3>

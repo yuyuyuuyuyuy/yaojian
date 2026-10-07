@@ -61,14 +61,7 @@
 <!-- ③ 系统展示 -->
 <section id="demo" class="section">
   <h2 class="reveal">系统展示</h2>
-  <p class="sec-sub reveal">已上线的管理端 13 个页面与群友查询页（截图取自运行中的系统）。</p>
-  <div class="shots-grid reveal">
-    <div class="shot-item"><img src="haigou_1.png" alt="总览仪表盘：今日待办与状态分布"><div class="shot-cap">总览仪表盘：待下单/待核对/待确认/售后中一目了然</div></div>
-    <div class="shot-item"><img src="haigou_2.png" alt="国际物流选择：克重区间方案矩阵"><div class="shot-cap">国际物流选择：按克重区间输出主选+备选方案矩阵</div></div>
-    <div class="shot-item"><img src="haigou_3.png" alt="合寄vs分寄提醒"><div class="shot-cap">合寄 vs 分寄：自动枚举最优分法并提示节省金额</div></div>
-    <div class="shot-item"><img src="haigou_4.png" alt="用户台账：状态卡片与明细"><div class="shot-cap">用户台账：已下单/已发货/商品来源一屏分清</div></div>
-    <div class="shot-item"><img src="haigou_5.png" alt="个人查询页：群友昵称登录只看自己的订单"><div class="shot-cap">群友个人查询：昵称登录，数据隔离只看自己</div></div>
-  </div>
+  <p class="sec-sub reveal">已上线的系统能力总览：七个环节，每环由对应的 Agent 或自动化规则接管。</p>
 
   <h3 class="sub-h reveal">七个环节 × 系统能力</h3>
   <div class="ver-table w-narrow reveal">
@@ -93,7 +86,6 @@
       <div class="t-body">
         <p>我运营着一个日韩代购私人群。每一单要经历七个环节：收集表下单、海外平台下单、追商家物流、仓库快照核对、选国际物流、盯海关、国内分包发货。国际运输要手工对比多家物流商细则，物流状态要刷多个网站查询，群友催问要翻记录回复——<b>痛点不是想出来的，是每天在发生的</b>。</p>
         <p>问题被拆成两类：能规则化的（查价、追物流、状态记录）交给系统；必须人做的（下单、核对、拍板）保留给人。这就是整个系统的原点。</p>
-        <a class="t-link" href="../haigou/README.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：项目说明（7 环节流程与系统结构）</a>
       </div>
     </div>
 
@@ -101,7 +93,6 @@
       <button class="t-head"><span class="t-no">02</span><span class="t-title">业务数字化：先把流程变成状态机</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>第一步不是写功能，是建模型：订单状态机（待下单→已下单→已到仓→已发国际→已到国内→已发国内→已签收，异议则进售后），并设计了三处<b>签收自动联动</b>——包裹轨迹出现「已签收」，订单状态自动推进。最琐碎的状态维护被完全自动化，人只处理例外。</p>
-        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：部署记录（含全部功能与流程说明）</a>
       </div>
     </div>
 
@@ -133,7 +124,6 @@
       <div class="t-body">
         <p>按 P0~P6 六阶段推进，<b>每个阶段验收通过才做下一阶段</b>：导入与解析→台账→物流选择→物流追踪→快照与售后→分包与话术→查询端上线。每阶段交付自动化测试全绿 + 真实数据验收 + git 留痕。</p>
         <p>上线不是终点：部署阿里云 ECS（systemd 自启 + 每日凌晨备份 + 部署全程留痕），群友用昵称就能查自己的订单。运营数据正在积累中。</p>
-        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：部署全程记录（勘察→快照→上线→维护手册）</a>
       </div>
     </div>
   </div>

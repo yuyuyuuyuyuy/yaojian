@@ -176,12 +176,6 @@ button { font-family: inherit; }
 .proj-go { color: var(--primary); font-weight: 600; font-size: 14.5px; }
 .proj-card:hover .proj-go { text-decoration: underline; }
 
-/* 截图网格（海淘页） */
-.shots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1080px; margin: 0 auto; }
-.shot-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 14px; box-shadow: var(--sh-1); }
-.shot-item img { width: 100%; border-radius: var(--r-sm); border: 1px solid var(--border); display: block; }
-.shot-cap { margin-top: 10px; font-size: 13px; color: var(--text-2); text-align: center; }
-
 /* 通用内容卡片 */
 .demo-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--sh-1); margin-bottom: 16px; }
 .result-note { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 22px; font-size: 14px; box-shadow: var(--sh-1); }
@@ -191,13 +185,13 @@ button { font-family: inherit; }
 .ds-label .ic { color: var(--primary); }
 .ds-body { font-size: 13px; color: var(--text-2); }
 
-/* 素材卡（药鉴：视频 + 画廊） */
-.media-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
-.media-slot { border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 20px; text-align: center; background: var(--card); box-shadow: var(--sh-1); }
+/* 素材卡（药鉴：视频 + 画廊，纵向排列放大展示） */
+.media-slots { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 36px; max-width: 860px; margin-left: auto; margin-right: auto; }
+.media-slot { border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 24px; text-align: center; background: var(--card); box-shadow: var(--sh-1); }
 .slot-label { font-weight: 600; font-size: 15px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .slot-label .ic { color: var(--primary); }
 .slot-body { color: var(--text-2); font-size: 13px; margin-top: 8px; }
-.pf-video { width: 100%; max-width: 640px; border-radius: var(--r-md); background: #000; display: block; margin: 0 auto; }
+.pf-video { width: 100%; border-radius: var(--r-md); background: #000; display: block; margin: 0 auto; }
 
 /* 反思 */
 .reflect-grid { display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
@@ -244,13 +238,6 @@ button { font-family: inherit; }
 .t-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .t-card.open .t-body { max-height: 800px; }
 .t-body p { font-size: 14px; margin-bottom: 10px; color: var(--text); padding-left: 20px; }
-.t-link {
-  display: inline-flex; align-items: center; gap: 6px; margin-left: 20px;
-  font-size: 12.5px; color: var(--primary); text-decoration: none;
-  border: 1px solid var(--border); border-radius: var(--r-full);
-  padding: 5px 14px; background: var(--card);
-}
-.t-link:hover { border-color: var(--primary); background: var(--primary-light); }
 .t-data-pending {
   background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-md);
   padding: 10px 14px; font-size: 13px; color: var(--text-2); margin-left: 20px;
@@ -314,7 +301,7 @@ button { font-family: inherit; }
 .gal { display: flex; align-items: center; gap: 10px; }
 .gal-frame { flex: 1; position: relative; }
 .gal-frame img {
-  width: 100%; max-height: 400px; object-fit: contain; border-radius: var(--r-md);
+  width: 100%; max-height: 500px; object-fit: contain; border-radius: var(--r-md);
   border: 1px solid var(--border); background: var(--bg); transition: opacity .12s ease;
 }
 .gal-cap {
@@ -421,7 +408,6 @@ button { font-family: inherit; }
 }
 @media (max-width: 720px) {
   .ov-grid { grid-template-columns: 1fr; }
-  .media-slots { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .ver-row { flex-direction: column; gap: 2px; }
