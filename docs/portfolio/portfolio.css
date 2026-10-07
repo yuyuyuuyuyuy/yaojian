@@ -442,3 +442,25 @@ body {
 
 /* 海淘管家页标题第二强调色（用户要求字体颜色有变化） */
 .hl-soft { color: var(--accent); }
+
+/* 七环节流程条美化（胶囊渐变+数字圆标+箭头+悬停浮起） */
+.flow-step {
+  display: flex; align-items: center; gap: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, var(--primary-light));
+  box-shadow: 0 1px 4px rgba(14,107,117,.10);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.flow-step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(14,107,117,.16);
+}
+.flow-step b {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  font-size: 13px; margin-right: 0;
+}
+.flow-step:not(:last-child)::after {
+  content: "→"; margin-left: 6px; color: var(--accent); opacity: .7; font-size: 15px;
+}
