@@ -427,9 +427,7 @@ body.pg-home .hero-sub { font-size: 17px; }
 
 /* ---------- 14. 联系 ---------- */
 #contact { text-align: center; padding-top: 64px; padding-bottom: 56px; border-top: 1px solid var(--border); }
-/* bolder：结尾邀约句（峰终定律的「终」） */
-.closing-line { font-size: 15.5px; color: var(--text-2); max-width: 520px; margin: 0 auto 22px; }
-.contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 0 0 26px; }
+.contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 24px 0 26px; }
 .contact-links .link-chip { font-size: 14px; padding: 10px 20px; }
 .foot-note { color: var(--text-2); font-size: 12px; }
 
