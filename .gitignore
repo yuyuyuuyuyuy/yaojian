@@ -20,3 +20,4 @@ res/builtin_kb/docs/*
 
 # 评测报告（运行产物，本机留存）
 tests/eval_reports/
+.impeccable/
