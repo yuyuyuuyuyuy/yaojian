@@ -9,7 +9,10 @@
 <body>
 
 <nav id="topnav">
-  <a class="brand" href="index.html"><img class="nav-logo" src="../frontend/assets/logo.png" alt="">作品集</a>
+  <a class="brand" href="index.html">作品集</a>
+  <button class="nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
+    <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
   <div class="nav-links">
     <a href="index.html">首页</a>
     <a href="#overview">速览</a>
@@ -33,10 +36,9 @@
     <span>0→1 独立产品</span><span>企业级方法论落地</span><span>真实用户验证中</span>
   </div>
   <div class="hero-cta reveal">
-    <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest" target="_blank">⬇ 体验药鉴（Windows 解压即用）</a>
+    <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest" target="_blank">体验药鉴（Windows 解压即用）</a>
     <a class="btn btn-ghost" href="#contact">联系我</a>
   </div>
-  <div class="hero-note reveal">数据全部可查证：17 篇产品文档 + 61 条决策记录 + 金标评测报告均随项目开源</div>
 </header>
 
 <!-- ② 项目速览 -->
@@ -65,6 +67,7 @@
       </div>
     </div>
   </div>
+  <p class="hero-note reveal">数据全部可查证：17 篇产品文档 + 61 条决策记录 + 金标评测报告均随项目开源</p>
 </section>
 
 <!-- ③ 体验演示 -->
@@ -78,7 +81,7 @@
       <button class="chip" data-q="q2">药物的降压作用机制是什么？</button>
     </div>
     <div class="demo-chat" id="demo-chat">
-      <div class="demo-empty" id="demo-empty">👆 点击上方预置问题，体验「带引用的回答」与「诚实拒答」</div>
+      <div class="demo-empty" id="demo-empty">点击上方预置问题，体验「带引用的回答」与「诚实拒答」</div>
     </div>
     <div class="demo-sources" id="demo-sources"></div>
     <p class="demo-note">演示数据为固定文案（取自金标评测验证过的题目与真实回答）；APP 内为真实检索与流式生成。</p>
@@ -88,29 +91,29 @@
   <div class="feat-wrap reveal">
     <button class="feat-arrow feat-arrow-l" id="feat-prev" aria-label="上一个">‹</button>
     <div class="feat-grid" id="feat-grid">
-      <div class="feat-card" data-desc="课件 PDF/PPT/Word 直接导入；PPT 图片页自动识别文字；扫描版讲义整本 OCR；多门课建多个知识库，任意组合问答。"><button class="feat-head"><span class="feat-ic">📚</span><span class="feat-name">资料入库</span></button></div>
-      <div class="feat-card" data-desc="每个结论带引用编号，点击即定位到原文并展开对照（含出处与相似度）——把「信任」做进产品。"><button class="feat-head"><span class="feat-ic">📑</span><span class="feat-name">引用原文核对</span></button></div>
-      <div class="feat-card" data-desc="检索阈值挡住无关领域；提示词铁律让模型诚实拒答——查不到就明说，并给出三条建议。"><button class="feat-head"><span class="feat-ic">🛡</span><span class="feat-name">防幻觉双防线</span></button></div>
-      <div class="feat-card" data-desc="笔记一键生成问答卡，按记忆曲线复习；忘记当天重现、轻松加速推进；每日上限防积压；可自选任意笔记制卡。"><button class="feat-head"><span class="feat-ic">🎴</span><span class="feat-name">背得会</span></button></div>
-      <div class="feat-card" data-desc="输入关键词先看知识模块，勾选需要的再生成；支持思维导图格式；可导出 Word、一键存回知识库。"><button class="feat-head"><span class="feat-ic">📝</span><span class="feat-name">知识笔记</span></button></div>
-      <div class="feat-card" data-desc="真题/讲义导入后 AI 自动提取考点标签；考点频次视图——哪个考点考过几年、出自哪几份真题，一张图看清。"><button class="feat-head"><span class="feat-ic">🎓</span><span class="feat-name">考研场景包</span></button></div>
-      <div class="feat-card" data-desc="手写笔记、课本照片拍一张就转成文字；识别结果可逐张校对修改，一键存入知识库参与问答。"><button class="feat-head"><span class="feat-ic">📷</span><span class="feat-name">拍照识字</span></button></div>
-      <div class="feat-card" data-desc="所有文档、索引、对话历史保存在自己电脑；仅在问答/识别时把必要片段发送给大模型 API。"><button class="feat-head"><span class="feat-ic">🔒</span><span class="feat-name">数据留在本机</span></button></div>
+      <div class="feat-card" data-desc="课件 PDF/PPT/Word 直接导入；PPT 图片页自动识别文字；扫描版讲义整本 OCR；多门课建多个知识库，任意组合问答。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4.2c.4 0 .8.2 1.1.5L11.7 7H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span><span class="feat-name">资料入库</span></button></div>
+      <div class="feat-card" data-desc="每个结论带引用编号，点击即定位到原文并展开对照（含出处与相似度）——把「信任」做进产品。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg></span><span class="feat-name">引用原文核对</span></button></div>
+      <div class="feat-card" data-desc="检索阈值挡住无关领域；提示词铁律让模型诚实拒答——查不到就明说，并给出三条建议。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 7.3-7 9.5-4.1-2.2-7-5.2-7-9.5V6z"/><path d="m9 11.5 2 2 4-4"/></svg></span><span class="feat-name">防幻觉双防线</span></button></div>
+      <div class="feat-card" data-desc="笔记一键生成问答卡，按记忆曲线复习；忘记当天重现、轻松加速推进；每日上限防积压；可自选任意笔记制卡。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m4.5 12.5 7.5 4 7.5-4"/><path d="m4.5 16.5 7.5 4 7.5-4"/></svg></span><span class="feat-name">背得会</span></button></div>
+      <div class="feat-card" data-desc="输入关键词先看知识模块，勾选需要的再生成；支持思维导图格式；可导出 Word、一键存回知识库。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><span class="feat-name">知识笔记</span></button></div>
+      <div class="feat-card" data-desc="真题/讲义导入后 AI 自动提取考点标签；考点频次视图——哪个考点考过几年、出自哪几份真题，一张图看清。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9.5 10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/><path d="M22 9.5V15"/></svg></span><span class="feat-name">考研场景包</span></button></div>
+      <div class="feat-card" data-desc="手写笔记、课本照片拍一张就转成文字；识别结果可逐张校对修改，一键存入知识库参与问答。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h2.5l1.2-2.2A2 2 0 0 1 9.5 4.5h5a2 2 0 0 1 1.8 1.3L17.5 8H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><circle cx="12" cy="13" r="3.2"/></svg></span><span class="feat-name">拍照识字</span></button></div>
+      <div class="feat-card" data-desc="所有文档、索引、对话历史保存在自己电脑；仅在问答/识别时把必要片段发送给大模型 API。"><button class="feat-head"><span class="feat-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg></span><span class="feat-name">数据留在本机</span></button></div>
     </div>
     <button class="feat-arrow feat-arrow-r" id="feat-next" aria-label="下一个">›</button>
   </div>
-  <div class="feat-detail reveal" id="feat-detail"><p>👆 点击上方卡片查看功能详情</p></div>
+  <div class="feat-detail reveal" id="feat-detail"><p>点击上方卡片查看功能详情</p></div>
 
   <div class="media-slots reveal">
     <div class="media-slot" id="slot-video">
-      <div class="slot-label">🎬 宣讲视频</div>
+      <div class="slot-label"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="m10.5 9.5 4.5 2.5-4.5 2.5z"/></svg>宣讲视频</div>
       <video class="pf-video" controls preload="metadata">
         <source src="药鉴宣讲视频.mp4" type="video/mp4">
         你的浏览器不支持视频播放，可前往 <a href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">GitHub 仓库</a> 了解详情。
       </video>
     </div>
     <div class="media-slot" id="slot-gallery">
-      <div class="slot-label">🖼 产品界面</div>
+      <div class="slot-label"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.7"/><path d="m21 15-4.5-4.5L8 19"/></svg>产品界面</div>
       <div class="gal" id="gal">
         <button class="feat-arrow gal-arrow" id="gal-prev" aria-label="上一张">‹</button>
         <div class="gal-frame">
@@ -132,91 +135,91 @@
 
   <div class="timeline reveal" id="timeline">
     <div class="t-card">
-      <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：在实验室里看见的「信任问题」</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：在实验室里看见的「信任问题」</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>药学背景的学习与实习中，我接触到 QC 检验的日常：检验操作规程散落在药典通则里，查条款要翻半天；问通用 AI，答案头头是道——但<b>没有出处，不敢信</b>。高合规场景里，「答得像」一文不值，「答得对且可核对」才值钱。</p>
         <p>于是有了最初的想法：<b>限定语料＋强制引用</b>的可信问答。这是药鉴一切设计的原点——后来的引用徽章、拒答铁律、金标评测，都是这句话的工程化。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/机会评估与立项.md" target="_blank">📄 证据：机会评估与立项</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/机会评估与立项.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：机会评估与立项</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">02</span><span class="t-title">探路：五个技术方案里选一条能落地的路</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">02</span><span class="t-title">探路：五个技术方案里选一条能落地的路</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>想法要落地，先选路。我对比了五条技术路线：云平台扣子、桌面软件 Cherry Studio、自托管 Dify、自研网页应用、本地模型。按「引用展示质量 × 分发成本 × 维护成本」选型：先用 Dify 自托管跑通（建 10 大类药典语料库，20 题验收通过），随后看清瓶颈——部署要服务器与 ICP 备案、分发靠链接，离「打开就用」很远。</p>
         <p>于是决定做<b>桌面 APP</b>：零服务器、零备案、解压即用。这个决策同时决定了隐私卖点（数据全本机）与成本结构（无运维）。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/技术架构评审.md" target="_blank">📄 证据：技术架构评审</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/技术架构评审.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：技术架构评审</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">03</span><span class="t-title">转型：把产品从「给 QC 用」改成「给学生用」</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">03</span><span class="t-title">转型：把产品从「给 QC 用」改成「给学生用」</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>最先让我动摇的，是两条现实：个人开发者做的产品很难触达公司里的 QC 人员——那意味着审批、采购和漫长的信任链条；而我自己，也正在被 AI 随口回答困扰——问个知识点，它答得头头是道，出处却无处可查。于是我意识到：需要「可信答案」的人，不只是实验室里的检验员，还有图书馆里的我自己。</p>
         <p>我决定把目标用户从 QC 检验员转向药学学生——改名（实验室助手→药鉴）、砍掉 QC 主线、新增笔记/卡片/考研场景等学习功能。回头再用竞品分析验证这个转向：通用 AI 已能满足基础问答，「本地私有」对大学生吸引力有限，真正的空白是<b>「可信引用 × 学习闭环 × 垂直语料」</b>的组合——转向的方向，恰好站在了空白上。这是产品最重要的一次 pivot：不是放弃「信任」，而是把它带到信任需求更痛的人群里。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/市场与竞品分析.md" target="_blank">📄 证据：市场与竞品分析</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/市场与竞品分析.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：市场与竞品分析</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">04</span><span class="t-title">证伪：用实验否决自己的假设</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">04</span><span class="t-title">证伪：用实验否决自己的假设</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>我曾预判「用户用口语提问会检索不到」是个大问题，甚至计划为此开发「问题改写」模块。按可证伪性原则设计了 H5 实验：两条知识库、50 个口语化查询实测——<b>漏检率 0%</b>，假设被证伪，改写模块的开发成本直接省下。</p>
         <p>这件事教会我：直觉假设必须用最小成本的实验检验，而不是直接写进需求池。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求调研文档.md" target="_blank">📄 证据：需求调研文档（H5 章节）</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求调研文档.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：需求调研文档（H5 章节）</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">05</span><span class="t-title">分级：排序之后，再回头纠正自己</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">05</span><span class="t-title">分级：排序之后，再回头纠正自己</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>用 KANO＋RICE 给全部需求分级。排序完成后，我又做了一轮批判性复检，纠正了自己两处分类：「口语化理解」应是基本型（所有通用 AI 都会，做不好=不合格）；「笔记付费」没有付费点、应为期望型。</p>
         <p>这次纠错让我明白：<b>KANO 类型由用户感知决定，不由付费点决定</b>。需求分级的价值不在表格，而在这些修正里——它暴露了我对用户心智的误判。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求分级.md" target="_blank">📄 证据：需求分级</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/需求分级.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：需求分级</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">06</span><span class="t-title">打磨：四轮对抗评审把 PRD 磨到位</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">06</span><span class="t-title">打磨：四轮对抗评审把 PRD 磨到位</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>PRD 初稿完成后，我先后组织了 4 轮对抗式评审——每一轮都带着「这个需求真的必要吗？验收标准可测吗？」去挑刺，累计提出并落实 28+ 处修改：防积压（每日卡片上限）、考研场景包、动态生成笔记模块、增量索引三行为约定、弱相关只答相关部分、误删保护、公式保真、出题成本闸门……</p>
         <p>PRD 不是写出来的，是审出来的。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/产品需求文档PRD.md" target="_blank">📄 证据：产品需求文档 PRD</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/产品需求文档PRD.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：产品需求文档 PRD</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">07</span><span class="t-title">信任工程化：把「可信」做成评测事实</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">07</span><span class="t-title">信任工程化：把「可信」做成评测事实</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>「可信」不能靠口号。我提出「可信必须可回归验证」的要求，落地成金标评测体系：25 道题（20 单题＋3 组追问＋2 拒答）三关自动评分——引用溯源、要点覆盖（LLM 裁判）、拒答完整性；每次对话管线变更跑回归对比，防能力退化；还设计了裁判公正性设防（20% 人工抽查）。</p>
         <p>结果：连续多轮 25/25、退化 0。可信从形容词变成了可回归的工程事实。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank">📄 证据：质量体系与评测设计</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：质量体系与评测设计</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">08</span><span class="t-title">共修：用真实体验抓自己的 bug</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">08</span><span class="t-title">共修：用真实体验抓自己的 bug</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>内部验收（Dogfooding）中，我按验收剧本实测自己的产品，抓出 7 个问题，含 1 个 P0：导入无文字层 PDF 时没有失败提示，会误导用户以为导入成功。发布后我又抓到 3 个隐藏 bug：拒答只回一句不带建议、考点分析对 docx/pdf 失效（读到的是乱码）、笔记接口响应缺状态字段导致选笔记视图必现报错。</p>
         <p>每一个都做了根因定位（含实验复现）、修复、回归、决策记录四步闭环。第 3 个 bug 也让我立了条规矩：冒烟测试必须验证<b>响应契约</b>，不能只看 HTTP 200。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/内部验收方案.md" target="_blank">📄 证据：内部验收方案</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/内部验收方案.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：内部验收方案</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">09</span><span class="t-title">验证：真实用户测试（进行中）</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">09</span><span class="t-title">验证：真实用户测试（进行中）</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>标准先行：H1~H11 假设判定表＋PMF 量化门槛（核心假设全过＋H8 付费意愿≥50%＋Sean Ellis 40% 失望问题）。计划招募药学本科生 5 名＋考研考生 5~8 名，按 17 步任务脚本实测并回收问卷。</p>
-        <p class="t-data-pending">📊 【数据待回填：招募进度 / 任务完成率 / 问卷回收】</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/用户测试计划.md" target="_blank">📄 证据：用户测试计划</a>
+        <p class="t-data-pending">【数据待回填：招募进度 / 任务完成率 / 问卷回收】</p>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/用户测试计划.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：用户测试计划</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">10</span><span class="t-title">下一步：用数据决定产品命运</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">10</span><span class="t-title">下一步：用数据决定产品命运</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>按 PMF 判定标准做 GO / Pivot / 止损的三选一；通过则推进 Mac 版与「考得上」出题功能。无论结果如何，判定过程和依据都会记录在案——<b>用数据决策，而不是用希望决策</b>。</p>
-        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/PMF判定标准.md" target="_blank">📄 证据：PMF 判定标准</a>
+        <a class="t-link" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/PMF判定标准.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：PMF 判定标准</a>
       </div>
     </div>
   </div>
@@ -227,13 +230,13 @@
   <h2 class="reveal">方法论工具箱</h2>
   <p class="sec-sub reveal">这些不是背出来的概念，每一个都在药鉴里真刀真枪用过。点击卡片看实例。</p>
   <div class="method-grid reveal">
-    <div class="m-card"><button class="m-front"><span class="m-ic">🔬</span>用户研究<span class="hint">点击看实例</span></button><div class="m-back">H5 实验证伪「口语化提问检索不到」假设（50 题 0% 漏检），省下改写模块开发成本。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">📊</span>KANO＋RICE<span class="hint">点击看实例</span></button><div class="m-back">全需求分级排序；评审中被纠正两处分类——KANO 类型由用户感知决定，不由付费点决定。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🧭</span>北极星指标<span class="hint">点击看实例</span></button><div class="m-back">「每周有效学习会话数」：成功回答（命中且非拒答）或笔记/卡片/自测事件；引用点击刻意排除（信任建立后会自然下降）。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">📈</span>数据埋点<span class="hint">点击看实例</span></button><div class="m-back">17 类行为事件白名单、payload≤500 字符、静默失败不打扰、全本机可导出可删除；北极星与拒答后 10 分钟追访联动。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">✅</span>金标评测<span class="hint">点击看实例</span></button><div class="m-back">25 题三关自动评分＋每次管线变更回归对比＋裁判 20% 人工抽查设防；连续多轮 25/25 退化 0。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🧪</span>Dogfooding<span class="hint">点击看实例</span></button><div class="m-back">按剧本实测自家产品，抓出 7 个问题含 1 个 P0；建立「发布闸门」：金标回归＋冒烟（含响应契约）全过才发布。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🎯</span>PMF 判定<span class="hint">点击看实例</span></button><div class="m-back">标准先行：H1~H11 判定表＋量化门槛（GO/Pivot/止损）＋Sean Ellis 40% 失望问题；灰色地带禁止直接 GO。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>用户研究<span class="hint">点击看实例</span></button><div class="m-back">H5 实验证伪「口语化提问检索不到」假设（50 题 0% 漏检），省下改写模块开发成本。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 20v-6M12 20v-11M17 20v-4"/></svg></span>KANO＋RICE<span class="hint">点击看实例</span></button><div class="m-back">全需求分级排序；评审中被纠正两处分类——KANO 类型由用户感知决定，不由付费点决定。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>北极星指标<span class="hint">点击看实例</span></button><div class="m-back">「每周有效学习会话数」：成功回答（命中且非拒答）或笔记/卡片/自测事件；引用点击刻意排除（信任建立后会自然下降）。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.2-6.5L14 18l2.8-6H21"/></svg></span>数据埋点<span class="hint">点击看实例</span></button><div class="m-back">17 类行为事件白名单、payload≤500 字符、静默失败不打扰、全本机可导出可删除；北极星与拒答后 10 分钟追访联动。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.4 2.4 4.6-4.8"/></svg></span>金标评测<span class="hint">点击看实例</span></button><div class="m-back">25 题三关自动评分＋每次管线变更回归对比＋裁判 20% 人工抽查设防；连续多轮 25/25 退化 0。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3h5M10.5 3v5.2L5 17.6a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3L13.5 8.2V3"/><path d="M7.5 15h9"/></svg></span>Dogfooding<span class="hint">点击看实例</span></button><div class="m-back">按剧本实测自家产品，抓出 7 个问题含 1 个 P0；建立「发布闸门」：金标回归＋冒烟（含响应契约）全过才发布。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>PMF 判定<span class="hint">点击看实例</span></button><div class="m-back">标准先行：H1~H11 判定表＋量化门槛（GO/Pivot/止损）＋Sean Ellis 40% 失望问题；灰色地带禁止直接 GO。</div></div>
   </div>
 </section>
 
@@ -253,14 +256,14 @@
   <h3 class="sub-h reveal">评测报告</h3>
   <div class="result-note reveal">
     金标评测连续多轮 <b>25/25 通过、退化 0</b>（引用溯源 / 要点覆盖 / 拒答完整性三关自动评分）。
-    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank">📄 查看评测体系设计</a>
+    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian/blob/main/docs/质量体系与评测设计.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>查看评测体系设计</a>
   </div>
 
   <h3 class="sub-h reveal">真实用户测试数据</h3>
   <div class="data-slots reveal">
-    <div class="data-slot"><div class="ds-label">🧭 北极星：每周有效学习会话</div><div class="ds-body">【数据待回填：S11 测试完成后更新】</div></div>
-    <div class="data-slot"><div class="ds-label">💬 用户反馈与推荐分</div><div class="ds-body">【数据待回填：问卷回收后更新】</div></div>
-    <div class="data-slot"><div class="ds-label">🎯 PMF 判定结论</div><div class="ds-body">【数据待回填：按判定标准输出 GO / Pivot / 止损】</div></div>
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>北极星：每周有效学习会话</div><div class="ds-body">【数据待回填：S11 测试完成后更新】</div></div>
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-2.9-.4-4.1-1L3 20l1-5.3a8.5 8.5 0 1 1 17-3.2z"/></svg>用户反馈与推荐分</div><div class="ds-body">【数据待回填：问卷回收后更新】</div></div>
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>PMF 判定结论</div><div class="ds-body">【数据待回填：按判定标准输出 GO / Pivot / 止损】</div></div>
   </div>
 </section>
 
@@ -278,12 +281,16 @@
 <footer id="contact" class="section">
   <h2 class="reveal">联系我</h2>
   <div class="contact-links reveal">
-    <a class="link-chip" id="c-email" href="mailto:18607995476@163.com">✉️ 邮箱：18607995476@163.com</a>
-    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">💻 GitHub：yuyuyuuyuyuy/yaojian</a>
-    <a class="link-chip" href="个人简历.pdf" target="_blank">📄 简历 PDF</a>
+    <a class="link-chip" id="c-email" href="mailto:18607995476@163.com"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 5.5 9-5.5"/></svg>邮箱：18607995476@163.com</a>
+    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub：yuyuyuuyuyuy/yaojian</a>
+    <a class="link-chip" href="个人简历.pdf" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>简历 PDF</a>
   </div>
   <p class="foot-note reveal">药鉴（YaoJian）· MIT License · 问答内容由大模型基于导入资料生成，正式实验与合规场景请以原始文献/标准原文为准</p>
 </footer>
+
+<button class="to-top" id="to-top" aria-label="返回顶部">
+  <svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg>
+</button>
 
 <script src="portfolio.js"></script>
 </body>

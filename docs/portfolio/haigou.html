@@ -9,7 +9,10 @@
 <body class="pg-haigou">
 
 <nav id="topnav">
-  <a class="brand" href="index.html">✦ 作品集</a>
+  <a class="brand" href="index.html">作品集</a>
+  <button class="nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
+    <svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
   <div class="nav-links">
     <a href="index.html">首页</a>
     <a href="yaojian.html">药鉴</a>
@@ -46,7 +49,7 @@
     <div class="flow-step"><b>6</b>国内分包</div>
     <div class="flow-step"><b>7</b>签收同步</div>
   </div>
-  <div class="stats reveal" style="max-width:1060px;margin:36px auto 0;">
+  <div class="stats w-narrow reveal">
     <div class="stat"><b data-count="8">0</b><span>个 Agent 分工协作</span></div>
     <div class="stat"><b data-count="7">0</b><span>条物流线路入知识库</span></div>
     <div class="stat"><b data-count="779">0</b><span>个价格档位（官方API）</span></div>
@@ -68,7 +71,7 @@
   </div>
 
   <h3 class="sub-h reveal">七个环节 × 系统能力</h3>
-  <div class="ver-table reveal" style="max-width:1060px;margin:0 auto;">
+  <div class="ver-table w-narrow reveal">
     <div class="ver-row"><div class="ver-tag">收集表</div><div class="ver-title">导入 + AI 查漏</div><div class="ver-desc">列自动识别导入；AI 查漏补缺与风险识别（缺链接/禁运词/数量预警）</div></div>
     <div class="ver-row"><div class="ver-tag">商家物流</div><div class="ver-title">17TRACK 自动同步</div><div class="ver-desc">自动查轨迹，签收自动转「已到仓」；超期无更新主动预警</div></div>
     <div class="ver-row"><div class="ver-tag">快照核对</div><div class="ver-title">快照分拣 + 人工核对</div><div class="ver-desc">AI 识别运单号并分拣到用户；商品核对保留人工（群友看图确认）</div></div>
@@ -86,31 +89,31 @@
 
   <div class="timeline reveal" id="timeline">
     <div class="t-card">
-      <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：代购业务的七个环节，全靠人工</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：代购业务的七个环节，全靠人工</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>我运营着一个日韩代购私人群。每一单要经历七个环节：收集表下单、海外平台下单、追商家物流、仓库快照核对、选国际物流、盯海关、国内分包发货。国际运输要手工对比多家物流商细则，物流状态要刷多个网站查询，群友催问要翻记录回复——<b>痛点不是想出来的，是每天在发生的</b>。</p>
         <p>问题被拆成两类：能规则化的（查价、追物流、状态记录）交给系统；必须人做的（下单、核对、拍板）保留给人。这就是整个系统的原点。</p>
-        <a class="t-link" href="../haigou/README.md" target="_blank">📄 证据：项目说明（7 环节流程与系统结构）</a>
+        <a class="t-link" href="../haigou/README.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：项目说明（7 环节流程与系统结构）</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">02</span><span class="t-title">业务数字化：先把流程变成状态机</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">02</span><span class="t-title">业务数字化：先把流程变成状态机</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>第一步不是写功能，是建模型：订单状态机（待下单→已下单→已到仓→已发国际→已到国内→已发国内→已签收，异议则进售后），并设计了三处<b>签收自动联动</b>——包裹轨迹出现「已签收」，订单状态自动推进。最琐碎的状态维护被完全自动化，人只处理例外。</p>
-        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank">📄 证据：部署记录（含全部功能与流程说明）</a>
+        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：部署记录（含全部功能与流程说明）</a>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">03</span><span class="t-title">多Agent设计：八个 Agent，各司其职</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">03</span><span class="t-title">多Agent设计：八个 Agent，各司其职</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>系统拆成 8 个 Agent：1 个主控（统一调度、运行日志）+ 7 个专职（订单解析、用户台账、国际物流选择、物流追踪、快照分拣、用户确认&售后、国内分包）。设计原则只有三条：<b>职责单一</b>（一个 Agent 只做一类事，出错好定位）；<b>失败隔离</b>（一个环节失败不阻塞整条流程）；<b>数据库共享状态</b>（Agent 之间不互相传话，一切可回溯）。</p>
       </div>
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">04</span><span class="t-title">人机分工：把「信任」留给人的边界设计</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">04</span><span class="t-title">人机分工：把「信任」留给人的边界设计</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>哪些环节交给 AI，是我最谨慎的决策：<b>商品核对保留人工</b>——AI 只识别快照上的运单号并分拣到用户（快照分拣Agent），「东西对不对」由群友看图人工确认，规避视觉误判风险；<b>物流选线 AI 推荐 + 人工拍板</b>（价格之外的因素人判断）；<b>话术 AI 生成 + 人工转发</b>（不碰个人号自动化红线）。</p>
         <p>这个边界不是一步想对的：初版设计了「商品图 zip 自动匹配 + AI 视觉核对」，被真实使用否决——导出压缩包太麻烦、且核对结果必须人说了算。当天就重构为人工核对 + AI 分拣，<b>一个被真实使用推翻的方案，比闭门造出的完美方案更接近真相</b>。</p>
@@ -118,7 +121,7 @@
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">05</span><span class="t-title">核心算法：把「估价」做成区间决策</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">05</span><span class="t-title">核心算法：把「估价」做成区间决策</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>国际物流选线是全系统最重的决策，我做了三件事：<b>①克重区间方案矩阵</b>——打包后克重与入库时差异大，单点估价不可靠，就按区间切档（≤2kg 按 0.5kg），每档给主选+备选，价格按区间上限保守估算；<b>②合寄 vs 分寄枚举优化</b>——枚举全部商品分组方式，把禁运词、数量上限、免税额度（书10本/CD20盘，超额按13%估税）作为约束和成本参与计算，分寄更省自动提醒；<b>③净重估算链</b>——入库克重扣 15% 外包装估净重，再加回新包装估重，最终按 ±10% 区间分析。</p>
         <p>七条线路 779 个价格档位全部从官方 API 抓取入库，规则文本可维护可更新。</p>
@@ -126,11 +129,11 @@
     </div>
 
     <div class="t-card">
-      <button class="t-head"><span class="t-no">06</span><span class="t-title">交付与上线：六阶段验收制，两天上线运营</span><span class="t-arrow">▾</span></button>
+      <button class="t-head"><span class="t-no">06</span><span class="t-title">交付与上线：六阶段验收制，两天上线运营</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
         <p>按 P0~P6 六阶段推进，<b>每个阶段验收通过才做下一阶段</b>：导入与解析→台账→物流选择→物流追踪→快照与售后→分包与话术→查询端上线。每阶段交付自动化测试全绿 + 真实数据验收 + git 留痕。</p>
         <p>上线不是终点：部署阿里云 ECS（systemd 自启 + 每日凌晨备份 + 部署全程留痕），群友用昵称就能查自己的订单。运营数据正在积累中。</p>
-        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank">📄 证据：部署全程记录（勘察→快照→上线→维护手册）</a>
+        <a class="t-link" href="../haigou/DEPLOYMENT.md" target="_blank"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>证据：部署全程记录（勘察→快照→上线→维护手册）</a>
       </div>
     </div>
   </div>
@@ -141,12 +144,12 @@
   <h2 class="reveal">方法论工具箱</h2>
   <p class="sec-sub reveal">每一个都在海淘管家里真刀真枪用过。点击卡片看实例。</p>
   <div class="method-grid reveal">
-    <div class="m-card"><button class="m-front"><span class="m-ic">🧩</span>业务流程数字化<span class="hint">点击看实例</span></button><div class="m-back">7 环节人工流程 → 状态机建模 + 3 处签收自动联动，最琐碎的状态维护完全自动化。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🤖</span>多Agent职责划分<span class="hint">点击看实例</span></button><div class="m-back">1 主控 + 7 专职：职责单一、失败隔离、数据库共享状态——出错可定位，单点不拖垮全局。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🤝</span>人机分工边界<span class="hint">点击看实例</span></button><div class="m-back">商品核对、方案拍板、话术转发保留人工；AI 只做分拣、推荐与生成——信任场景人说了算。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🪜</span>阶段验收制交付<span class="hint">点击看实例</span></button><div class="m-back">P0~P6 每阶段验收才继续：78 项自动化测试全绿 + 真实数据验收 + git 留痕，23 个提交可回溯。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">🛡</span>降级设计<span class="hint">点击看实例</span></button><div class="m-back">无 API Key / 接口失败自动降级（未配视觉模型→手动输单号），AI 不可用时系统依然完整可用。</div></div>
-    <div class="m-card"><button class="m-front"><span class="m-ic">📚</span>规则知识库<span class="hint">点击看实例</span></button><div class="m-back">7 条物流线路 779 档价格 + 禁运/免税/申报规则全部结构化入库，价格计算零 API 消耗，规则可维护可更新。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M6 9v2.5a2 2 0 0 0 2 2H13a2 2 0 0 1 2 2V18"/></svg></span>业务流程数字化<span class="hint">点击看实例</span></button><div class="m-back">7 环节人工流程 → 状态机建模 + 3 处签收自动联动，最琐碎的状态维护完全自动化。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4.5" r="1"/><path d="M9.5 13.5h.01M14.5 13.5h.01"/></svg></span>多Agent职责划分<span class="hint">点击看实例</span></button><div class="m-back">1 主控 + 7 专职：职责单一、失败隔离、数据库共享状态——出错可定位，单点不拖垮全局。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M8 20h8"/><path d="M4 7h16"/><path d="M4 7l-2.3 5.6a2.9 2.9 0 0 0 5.7 0z"/><path d="M20 7l-2.3 5.6a2.9 2.9 0 0 1-5.7 0z"/></svg></span>人机分工边界<span class="hint">点击看实例</span></button><div class="m-back">商品核对、方案拍板、话术转发保留人工；AI 只做分拣、推荐与生成——信任场景人说了算。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h3.5v-4h4v-4h4V6h4.5"/></svg></span>阶段验收制交付<span class="hint">点击看实例</span></button><div class="m-back">P0~P6 每阶段验收才继续：78 项自动化测试全绿 + 真实数据验收 + git 留痕，23 个提交可回溯。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 3.5V8h-4.5"/></svg></span>降级设计<span class="hint">点击看实例</span></button><div class="m-back">无 API Key / 接口失败自动降级（未配视觉模型→手动输单号），AI 不可用时系统依然完整可用。</div></div>
+    <div class="m-card"><button class="m-front"><span class="m-ic"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>规则知识库<span class="hint">点击看实例</span></button><div class="m-back">7 条物流线路 779 档价格 + 禁运/免税/申报规则全部结构化入库，价格计算零 API 消耗，规则可维护可更新。</div></div>
   </div>
 </section>
 
@@ -155,7 +158,7 @@
   <h2 class="reveal">成果与数据</h2>
 
   <h3 class="sub-h reveal">数字速查（全部可查证）</h3>
-  <div class="ver-table reveal" style="max-width:860px;margin:0 auto;">
+  <div class="ver-table w-narrow reveal">
     <div class="ver-row"><div class="ver-tag">8</div><div class="ver-title">个 Agent（1 主控+7 专职）</div><div class="ver-desc">agents/ 目录，各司其职、失败隔离</div></div>
     <div class="ver-row"><div class="ver-tag">7 / 779</div><div class="ver-title">线路 / 价格档位</div><div class="ver-desc">国际运输官方 API 抓取入库（含阶梯计费/禁运/免税规则）</div></div>
     <div class="ver-row"><div class="ver-tag">78</div><div class="ver-title">项自动化测试</div><div class="ver-desc">覆盖导入/台账/物流选择/追踪/分拣/售后全链路，全通过</div></div>
@@ -164,10 +167,10 @@
   </div>
 
   <h3 class="sub-h reveal">上线状态</h3>
-  <div class="data-slots reveal" style="max-width:860px;margin:0 auto;">
-    <div class="data-slot"><div class="ds-label">🚀 部署</div><div class="ds-body">阿里云 Ubuntu ECS，systemd 自启 + 崩溃自动重启，安全组最小放行</div></div>
-    <div class="data-slot"><div class="ds-label">💾 数据安全</div><div class="ds-body">每日凌晨 3 点自动备份（数据库+上传文件，保留 7 天），部署全程留痕</div></div>
-    <div class="data-slot"><div class="ds-label">👥 真实使用</div><div class="ds-body">昵称自助查询已开通，运营数据积累中</div></div>
+  <div class="data-slots w-narrow reveal">
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="6.5" rx="2"/><rect x="4" y="13.5" width="16" height="6.5" rx="2"/><path d="M8 7.25h.01M8 16.75h.01"/></svg>部署</div><div class="ds-body">阿里云 Ubuntu ECS，systemd 自启 + 崩溃自动重启，安全组最小放行</div></div>
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/><path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/><path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></svg>数据安全</div><div class="ds-body">每日凌晨 3 点自动备份（数据库+上传文件，保留 7 天），部署全程留痕</div></div>
+    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16.5 4.8a3.5 3.5 0 0 1 0 6.4M17.5 14.7c2 .7 3.5 2.6 3.5 5.3"/></svg>真实使用</div><div class="ds-body">昵称自助查询已开通，运营数据积累中</div></div>
   </div>
 </section>
 
@@ -185,12 +188,16 @@
 <footer id="contact" class="section">
   <h2 class="reveal">联系我</h2>
   <div class="contact-links reveal">
-    <a class="link-chip" id="c-email" href="mailto:18607995476@163.com">✉️ 邮箱：18607995476@163.com</a>
-    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">💻 GitHub：yuyuyuuyuyuy/yaojian</a>
-    <a class="link-chip" href="个人简历.pdf" target="_blank">📄 简历 PDF</a>
+    <a class="link-chip" id="c-email" href="mailto:18607995476@163.com"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 5.5 9-5.5"/></svg>邮箱：18607995476@163.com</a>
+    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub：yuyuyuuyuyuy/yaojian</a>
+    <a class="link-chip" href="个人简历.pdf" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>简历 PDF</a>
   </div>
   <p class="foot-note reveal">海淘管家（HaiTao GuanJia）· 个人业务数字化实践 · 项目数据均可查证</p>
 </footer>
+
+<button class="to-top" id="to-top" aria-label="返回顶部">
+  <svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg>
+</button>
 
 <script src="portfolio.js"></script>
 </body>

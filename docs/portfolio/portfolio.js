@@ -7,30 +7,43 @@
     return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
+  /* ---------- 0. 动效降级（无障碍） ---------- */
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   /* ---------- 1. 滚动浮现 ---------- */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  if (REDUCED) {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("visible"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  }
 
   /* ---------- 2. 数字滚动 ---------- */
-  var cio = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var el = e.target, target = parseInt(el.dataset.count, 10) || 0;
-      var t0 = performance.now(), dur = 1200;
-      function step(t) {
-        var p = Math.min((t - t0) / dur, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(step); else el.textContent = target;
-      }
-      requestAnimationFrame(step);
-      cio.unobserve(el);
+  if (REDUCED) {
+    document.querySelectorAll(".stat b[data-count]").forEach(function (el) {
+      el.textContent = el.dataset.count;
     });
-  }, { threshold: 0.6 });
-  document.querySelectorAll(".stat b[data-count]").forEach(function (el) { cio.observe(el); });
+  } else {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, target = parseInt(el.dataset.count, 10) || 0;
+        var t0 = performance.now(), dur = 1200;
+        function step(t) {
+          var p = Math.min((t - t0) / dur, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll(".stat b[data-count]").forEach(function (el) { cio.observe(el); });
+  }
 
   /* ---------- 3. 导航高亮（scrollspy） ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
@@ -62,7 +75,7 @@
     },
     q2: {
       q: "药物的降压作用机制是什么？",
-      a: "资料中未找到相关内容。所选知识库中没有与这个问题相关的资料。\n建议：①换一个关键词试试；②先在侧边栏新建知识库并导入相关课件/笔记；③若是扫描版 PDF 无法检索，可在知识库旁点「📑」整本 OCR 后再问。",
+      a: "资料中未找到相关内容。所选知识库中没有与这个问题相关的资料。\n建议：①换一个关键词试试；②先在侧边栏新建知识库并导入相关课件/笔记；③若是扫描版 PDF 无法检索，可在知识库旁点「OCR」整本识别后再问。",
       refusal: true,
       sources: []
     }
@@ -79,7 +92,7 @@
     box.innerHTML = "";
     var d = DEMO[key];
     if (d.refusal) {
-      box.innerHTML = '<div class="src-card">🛡 拒答演示：检索阈值与提示词铁律构成「防幻觉双防线」，查不到就明说，绝不编造。</div>';
+      box.innerHTML = '<div class="src-card">拒答演示：检索阈值与提示词铁律构成「防幻觉双防线」，查不到就明说，绝不编造。</div>';
       return;
     }
     d.sources.forEach(function (s) {
@@ -226,5 +239,36 @@
     $("gal-prev").addEventListener("click", function () { showGal(galIdx - 1); });
     $("gal-next").addEventListener("click", function () { showGal(galIdx + 1); });
     showGal(0);
+  }
+
+  /* ---------- 9. 汉堡菜单（移动端） ---------- */
+  var burger = $("nav-burger");
+  var topnav = document.getElementById("topnav");
+  if (burger && topnav) {
+    function closeNav() {
+      topnav.classList.remove("nav-open");
+      burger.setAttribute("aria-expanded", "false");
+    }
+    burger.addEventListener("click", function () {
+      var open = topnav.classList.toggle("nav-open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.querySelectorAll(".nav-links a").forEach(function (a) {
+      a.addEventListener("click", closeNav);
+    });
+    document.addEventListener("click", function (e) {
+      if (!topnav.contains(e.target)) closeNav();
+    });
+  }
+
+  /* ---------- 10. 返回顶部 ---------- */
+  var toTop = $("to-top");
+  if (toTop) {
+    window.addEventListener("scroll", function () {
+      toTop.classList.toggle("show", window.scrollY > 600);
+    }, { passive: true });
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" });
+    });
   }
 })();
