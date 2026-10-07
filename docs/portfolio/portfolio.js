@@ -285,6 +285,26 @@
     showGal(0);
   }
 
+  /* ---------- 8.5 七环节流程条：点击环节 → 能力详情（仅海淘页） ---------- */
+  var flowSteps = Array.prototype.slice.call(document.querySelectorAll(".flow-step"));
+  var flowDetail = $("flow-detail");
+  if (flowSteps.length && flowDetail) {
+    function selectFlow(btn) {
+      flowSteps.forEach(function (b) {
+        b.classList.remove("sel");
+        b.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("sel");
+      btn.setAttribute("aria-pressed", "true");
+      var p = flowDetail.querySelector("p");
+      if (p) p.textContent = btn.dataset.desc || "";
+    }
+    flowSteps.forEach(function (b) {
+      b.addEventListener("click", function () { selectFlow(b); });
+    });
+    selectFlow(flowSteps[0]);
+  }
+
   /* ---------- 9. 汉堡菜单（移动端） ---------- */
   var burger = $("nav-burger");
   var topnav = document.getElementById("topnav");

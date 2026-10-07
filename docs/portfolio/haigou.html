@@ -52,14 +52,15 @@
   <h2 class="reveal">项目速览</h2>
   <p class="lead reveal">群友填收集表 → 海外下单 → 仓库快照 → 国际物流选线 → 海关 → 国内分包 → 签收，七个环节被改造成一条人机协作的流水线。</p>
   <div class="flow-row reveal">
-    <div class="flow-step"><b>1</b>收集表导入</div>
-    <div class="flow-step"><b>2</b>商家物流追踪</div>
-    <div class="flow-step"><b>3</b>快照分拣核对</div>
-    <div class="flow-step"><b>4</b>国际物流选线</div>
-    <div class="flow-step"><b>5</b>海关追踪</div>
-    <div class="flow-step"><b>6</b>国内分包</div>
-    <div class="flow-step"><b>7</b>签收同步</div>
+    <button class="flow-step" data-desc="列自动识别导入；AI 查漏补缺与风险识别（缺链接/禁运词/数量预警）"><b>1</b>收集表导入</button>
+    <button class="flow-step" data-desc="自动查轨迹，签收自动转「已到仓」；超期无更新主动预警"><b>2</b>商家物流追踪</button>
+    <button class="flow-step" data-desc="AI 识别运单号并分拣到用户；商品核对保留人工（群友看图确认）"><b>3</b>快照分拣核对</button>
+    <button class="flow-step" data-desc="克重区间主选/备选方案；枚举全部分法自动找出更省的合寄/分寄组合"><b>4</b>国际物流选线</button>
+    <button class="flow-step" data-desc="清关/退回等异常词自动预警，及时人工处置"><b>5</b>海关追踪</button>
+    <button class="flow-step" data-desc="按用户生成打包清单；发货一键建包裹/改状态/生成通知"><b>6</b>国内分包</button>
+    <button class="flow-step" data-desc="国内段签收自动转「已签收」；群友昵称登录随时自查进度"><b>7</b>签收同步</button>
   </div>
+  <div class="flow-detail reveal" id="flow-detail"><p>点击上方环节，查看该环节对应的系统能力</p></div>
   <div class="stats w-narrow reveal">
     <div class="stat"><b data-count="8">0</b><span>个 Agent 分工协作</span></div>
     <div class="stat"><b data-count="7">0</b><span>条物流线路入知识库</span></div>
@@ -189,6 +190,7 @@
 <!-- ⑧ 联系 -->
 <footer id="contact" class="section">
   <h2 class="reveal">联系我</h2>
+  <p class="closing-line reveal">如果你正在找一位能把想法做成被验证产品的人，欢迎来信聊聊。</p>
   <div class="contact-links reveal">
     <a class="link-chip" id="c-email" href="mailto:18607995476@163.com"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 5.5 9-5.5"/></svg>邮箱：18607995476@163.com</a>
     <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank" rel="noopener"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub：yuyuyuuyuyuy/yaojian</a>
