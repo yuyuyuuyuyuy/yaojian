@@ -20,6 +20,10 @@
   --r-md: 10px;
   --r-lg: 14px;
   --r-full: 999px;
+  /* 语义色：进行中/待回填（全站唯一状态色，克制使用） */
+  --pending-text: #80651a;
+  --pending-bg: #fdf8ea;
+  --pending-border: #e0d2a0;
   --sh-1: 0 1px 2px rgba(16,24,40,.05);
   --sh-2: 0 4px 14px rgba(16,24,40,.07);
   --sh-3: 0 12px 28px rgba(16,24,40,.12);
@@ -221,7 +225,15 @@ body.pg-home .hero-sub { font-size: 17px; }
 /* 验证进行中清单（待回填项不再做成占位卡片） */
 .vip-list { list-style: none; margin-top: 12px; }
 .vip-list li { position: relative; font-size: 13px; color: var(--text-2); padding: 4px 0 4px 16px; }
-.vip-list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); }
+.vip-list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--pending-text); }
+.vip-list .pending { color: var(--pending-text); font-weight: 500; }
+/* 状态徽章（进行中/待回填） */
+.status-chip {
+  display: inline-flex; align-items: center;
+  background: var(--pending-bg); color: var(--pending-text);
+  border: 1px solid var(--pending-border); border-radius: var(--r-full);
+  padding: 2px 12px; font-size: 12.5px; font-weight: 600; margin-right: 6px;
+}
 .data-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .data-slot { border: 1px solid var(--border); border-radius: var(--r-lg); padding: 22px; background: var(--card); box-shadow: var(--sh-1); }
 .ds-label { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
@@ -282,8 +294,8 @@ body.pg-home .hero-sub { font-size: 17px; }
 .t-card.open .t-body { max-height: 800px; }
 .t-body p { font-size: 14px; margin-bottom: 10px; color: var(--text); }
 .t-data-pending {
-  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-md);
-  padding: 10px 14px; font-size: 13px; color: var(--text-2);
+  background: var(--pending-bg); border: 1px solid var(--pending-border); border-radius: var(--r-md);
+  padding: 10px 14px; font-size: 13px; color: var(--pending-text);
 }
 
 /* ---------- 9. 方法论翻卡 ---------- */
