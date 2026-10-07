@@ -128,22 +128,31 @@
       aEl.appendChild(bEl);
       chat.appendChild(aEl);
       var i = 0, text = d.a;
+      var finish = function () {
+        if (typingTimer) { clearInterval(typingTimer); typingTimer = null; }
+        bEl.innerHTML = badgeHtml(text);
+        bEl.querySelectorAll(".cite").forEach(function (c) {
+          c.setAttribute("role", "button");
+          c.setAttribute("tabindex", "0");
+          var hl = function () {
+            document.querySelectorAll("#demo-sources .src-card").forEach(function (s) {
+              if (s.dataset.n === c.dataset.n) s.classList.toggle("hl");
+            });
+          };
+          c.addEventListener("click", hl);
+          c.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); hl(); }
+          });
+        });
+        renderSources(key);
+      };
+      // 点击回答立即显示完整内容（评审修复：打字动画可跳过）
+      aEl.addEventListener("click", function () { if (typingTimer) finish(); });
+      if (REDUCED) { finish(); return; }
       typingTimer = setInterval(function () {
         i += 2;
         bEl.textContent = text.slice(0, i);
-        if (i >= text.length) {
-          clearInterval(typingTimer);
-          typingTimer = null;
-          bEl.innerHTML = badgeHtml(text);
-          bEl.querySelectorAll(".cite").forEach(function (c) {
-            c.addEventListener("click", function () {
-              document.querySelectorAll("#demo-sources .src-card").forEach(function (s) {
-                if (s.dataset.n === c.dataset.n) s.classList.toggle("hl");
-              });
-            });
-          });
-          renderSources(key);
-        }
+        if (i >= text.length) finish();
       }, 40);
     };
     if (chat.children.length > 0) {
@@ -159,14 +168,37 @@
   });
 
   /* ---------- 5. 决策故事手风琴 ---------- */
+  function syncTaria() {
+    document.querySelectorAll(".t-head").forEach(function (h) {
+      h.setAttribute("aria-expanded", h.parentElement.classList.contains("open") ? "true" : "false");
+    });
+  }
   document.querySelectorAll(".t-head").forEach(function (h) {
     h.addEventListener("click", function () {
       var card = h.parentElement;
       var wasOpen = card.classList.contains("open");
       document.querySelectorAll(".t-card.open").forEach(function (c) { c.classList.remove("open"); });
       if (!wasOpen) card.classList.add("open");
+      syncTaria();
     });
   });
+
+  /* ---------- 5.5 决策故事：默认展开前 2 张 + 全部展开/收起（评审修复） ---------- */
+  var tCards = document.querySelectorAll("#timeline .t-card");
+  if (tCards.length) {
+    tCards.forEach(function (c, i) { if (i < 2) c.classList.add("open"); });
+    syncTaria();
+    var tAll = $("t-all");
+    if (tAll) {
+      tAll.addEventListener("click", function () {
+        var allOpen = Array.prototype.every.call(tCards, function (c) { return c.classList.contains("open"); });
+        tCards.forEach(function (c) { c.classList.toggle("open", !allOpen); });
+        tAll.textContent = allOpen ? "全部展开" : "全部收起";
+        tAll.setAttribute("aria-expanded", allOpen ? "false" : "true");
+        syncTaria();
+      });
+    }
+  }
 
   /* ---------- 6. 方法论翻卡 ---------- */
   document.querySelectorAll(".m-card").forEach(function (c) {
@@ -179,8 +211,14 @@
   var featCards = Array.prototype.slice.call(document.querySelectorAll(".feat-card"));
 
   function selectFeat(card) {
-    featCards.forEach(function (c) { c.classList.remove("sel"); });
+    featCards.forEach(function (c) {
+      c.classList.remove("sel");
+      var h = c.querySelector(".feat-head");
+      if (h) h.setAttribute("aria-selected", "false");
+    });
     card.classList.add("sel");
+    var head = card.querySelector(".feat-head");
+    if (head) head.setAttribute("aria-selected", "true");
     var p = featDetail.querySelector("p");
     if (p) p.textContent = card.dataset.desc || "";
     featDetail.style.opacity = 0;
@@ -219,7 +257,13 @@
       GALLERY.forEach(function (g, i) {
         var d = document.createElement("span");
         d.className = "gal-dot" + (i === galIdx ? " on" : "");
+        d.setAttribute("role", "button");
+        d.setAttribute("tabindex", "0");
+        d.setAttribute("aria-label", "第 " + (i + 1) + " 张：" + g.cap);
         d.addEventListener("click", function () { showGal(i); });
+        d.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showGal(i); }
+        });
         galDots.appendChild(d);
       });
     }

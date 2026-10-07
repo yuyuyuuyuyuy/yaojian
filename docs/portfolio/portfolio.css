@@ -30,6 +30,8 @@ body.pg-haigou {
   --primary-dark: #0a525a;
   --primary-light: #e9f4f5;
 }
+/* 海淘页双色编码修复：.hl（人机协作系统）用药典蓝，与 .hl-soft（代购业务·海绿）区分，呼应首页蓝绿双义 */
+body.pg-haigou .hl { color: #1a4d80; }
 
 /* ---------- 2. Base ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -102,7 +104,8 @@ button { font-family: inherit; }
 .btn-ghost { border: 1px solid var(--border-strong); color: var(--text); background: var(--card); }
 .btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
 .hero-logo { width: 72px; height: 72px; border-radius: 50%; box-shadow: var(--sh-2); margin-bottom: 22px; }
-.hero-note { color: var(--text-2); font-size: 12.5px; text-align: center; margin-top: 26px; }
+/* 身份行（2026-10 评审修复：首屏说明「这是谁、找什么岗」） */
+.hero-id { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
 /* 首屏渐次入场（A1）：子元素依次浮现 */
 #hero > *:nth-child(2) { transition-delay: .08s; }
 #hero > *:nth-child(3) { transition-delay: .16s; }
@@ -205,6 +208,10 @@ button { font-family: inherit; }
 /* 通用内容卡片 */
 .demo-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--sh-1); margin-bottom: 16px; }
 .result-note { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 22px; font-size: 14px; box-shadow: var(--sh-1); }
+/* 验证进行中清单（待回填项不再做成占位卡片） */
+.vip-list { list-style: none; margin-top: 12px; }
+.vip-list li { position: relative; font-size: 13px; color: var(--text-2); padding: 4px 0 4px 16px; }
+.vip-list li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--border-strong); }
 .data-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .data-slot { border: 1px solid var(--border); border-radius: var(--r-lg); padding: 22px; background: var(--card); box-shadow: var(--sh-1); }
 .ds-label { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
@@ -217,7 +224,7 @@ button { font-family: inherit; }
 .slot-label { font-weight: 600; font-size: 15px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .slot-label .ic { color: var(--primary); }
 .slot-body { color: var(--text-2); font-size: 13px; margin-top: 8px; }
-.pf-video { width: 100%; border-radius: var(--r-md); background: #000; display: block; margin: 0 auto; }
+.pf-video { width: 100%; border-radius: var(--r-md); background: #000; color: #fff; display: block; margin: 0 auto; }
 
 /* 反思 */
 .reflect-grid { display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
@@ -263,15 +270,15 @@ button { font-family: inherit; }
 .t-card.open .t-arrow { transform: rotate(180deg); }
 .t-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .t-card.open .t-body { max-height: 800px; }
-.t-body p { font-size: 14px; margin-bottom: 10px; color: var(--text); padding-left: 20px; }
+.t-body p { font-size: 14px; margin-bottom: 10px; color: var(--text); }
 .t-data-pending {
   background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-md);
-  padding: 10px 14px; font-size: 13px; color: var(--text-2); margin-left: 20px;
+  padding: 10px 14px; font-size: 13px; color: var(--text-2);
 }
 
 /* ---------- 9. 方法论翻卡 ---------- */
 .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-.m-card { position: relative; perspective: 900px; height: 190px; cursor: pointer; }
+.m-card { position: relative; perspective: 900px; height: 200px; cursor: pointer; }
 .m-front, .m-back {
   position: absolute; inset: 0; border-radius: var(--r-lg);
   backface-visibility: hidden; transition: transform .5s ease;
@@ -312,7 +319,7 @@ button { font-family: inherit; }
 .feat-ic { color: var(--primary); }
 .feat-name { font-size: 14.5px; font-weight: 600; color: var(--text); }
 .feat-arrow {
-  flex: 0 0 36px; height: 36px; border-radius: 50%;
+  flex: 0 0 40px; height: 40px; border-radius: 50%;
   border: 1px solid var(--border-strong); background: var(--card); color: var(--primary);
   font-size: 20px; line-height: 1; cursor: pointer; transition: all .15s;
 }
@@ -336,8 +343,12 @@ button { font-family: inherit; }
 }
 .gal-arrow { flex: 0 0 34px; height: 34px; }
 .gal-dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
-.gal-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); cursor: pointer; transition: all .15s; }
-.gal-dot.on { background: var(--primary); transform: scale(1.2); }
+/* 圆点视觉 8px、命中区 20px（触控友好，评审修复） */
+.gal-dot {
+  width: 8px; height: 8px; padding: 6px; border-radius: 50%;
+  background: var(--border-strong); background-clip: content-box; cursor: pointer; transition: all .15s;
+}
+.gal-dot.on { background-color: var(--primary); transform: scale(1.2); }
 
 /* ---------- 12. 体验演示（对话） ---------- */
 .demo-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -360,7 +371,7 @@ button { font-family: inherit; }
 }
 .msg-a .cite {
   display: inline-block; background: var(--primary); color: #fff;
-  border-radius: var(--r-sm); padding: 0 8px; margin: 0 2px; font-size: 12.5px;
+  border-radius: var(--r-sm); padding: 2px 9px; margin: 0 2px; font-size: 12.5px;
   font-weight: 600; cursor: pointer; vertical-align: 1px; transition: background-color .15s;
 }
 .msg-a .cite:hover { background: var(--primary-dark); }
@@ -418,11 +429,26 @@ button { font-family: inherit; }
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* 决策故事：全部展开按钮 */
+.t-all-wrap { text-align: center; margin-bottom: 16px; }
+.t-all {
+  border: 1px solid var(--border-strong); background: var(--card); color: var(--primary);
+  border-radius: var(--r-full); padding: 7px 18px; font-size: 13px; cursor: pointer;
+  transition: all .15s; font-family: inherit;
+}
+.t-all:hover { border-color: var(--primary); background: var(--primary-light); }
+
 /* ---------- 17. 工具类 ---------- */
 .w-narrow { max-width: 900px; margin-left: auto; margin-right: auto; }
 .stats.w-narrow { margin-top: 36px; margin-bottom: 0; }
 
 /* ---------- 18. 响应式 ---------- */
+/* 桌面：功能卡改 2 行网格，横滑箭头与滑动提示隐藏（评审修复：桌面鼠标无横滑） */
+@media (min-width: 860px) {
+  .feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; scroll-snap-type: none; }
+  .feat-arrow { display: none; }
+}
+
 @media (max-width: 860px) {
   #topnav { flex-wrap: wrap; height: auto; padding: 10px 16px; row-gap: 10px; }
   .nav-burger { display: inline-flex; }
@@ -446,6 +472,18 @@ button { font-family: inherit; }
   .ver-row { flex-direction: column; gap: 2px; }
   .ver-title { min-width: 0; }
   .proj-card { padding: 24px; }
+}
+
+/* ---------- 18.5 打印样式 ---------- */
+@media print {
+  #topnav, .to-top, .t-all-wrap { display: none; }
+  .section { padding: 20px 0; }
+  .reveal { opacity: 1; transform: none; }
+  .t-body { max-height: none; }
+  .m-card { height: auto; }
+  .m-front { display: none; }
+  .m-back { position: static; transform: none; backface-visibility: visible; border-radius: var(--r-md); }
+  .ver-table, .proj-card, .r-card, .demo-box, .result-note, .media-slot { break-inside: avoid; }
 }
 
 /* ---------- 19. 动效降级（无障碍） ---------- */

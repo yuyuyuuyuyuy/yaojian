@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>作品集 · 药鉴 —— 把想法做成被验证的产品</title>
+<meta name="description" content="药鉴：0→1 独立开发的 AI 药学学习工具。每个回答带引用编号可核对原文，查不到就明说；金标评测 25/25 全过。">
+<meta property="og:title" content="药鉴 —— 把想法做成被验证的产品">
+<meta property="og:description" content="0→1 独立开发的 AI 药学学习工具：带引用的可信问答、防幻觉双防线、金标评测 25/25。">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="portfolio.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
@@ -28,15 +34,16 @@
 
 <!-- ① Hero -->
 <header id="hero" class="section">
-  <img class="hero-logo reveal" src="../frontend/assets/logo.png" alt="药鉴 logo">
-  <p class="kicker reveal">YAO JIAN · 个人作品集</p>
+  <img class="hero-logo reveal" src="logo.png" alt="药鉴 logo">
+  <p class="kicker reveal">YAO JIAN · 答有所据，学有所成</p>
   <h1 class="reveal">把想法做成<span class="hl">被验证的</span>产品</h1>
   <p class="hero-sub reveal">药学 × 产品｜独立完成药鉴从 0 到 1 全流程</p>
+  <p class="hero-id reveal">2027 届 · 求职方向：产品经理</p>
   <div class="hero-tags reveal">
     <span>0→1 独立产品</span><span>企业级方法论落地</span><span>真实用户验证中</span>
   </div>
   <div class="hero-cta reveal">
-    <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest" target="_blank">体验药鉴（Windows 解压即用）</a>
+    <a class="btn btn-primary" href="https://github.com/yuyuyuuyuyuy/yaojian/releases/latest" target="_blank" rel="noopener">体验药鉴（Windows 解压即用）</a>
     <a class="btn btn-ghost" href="#contact">联系我</a>
   </div>
 </header>
@@ -57,8 +64,8 @@
         <div class="stat"><b data-count="24">0</b><span>项自动化测试</span></div>
       </div>
       <div class="ov-links reveal">
-        <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">GitHub 开源仓库</a>
-        <a class="btn btn-ghost" href="https://yuyuyuuyuyuy.github.io/yaojian/" target="_blank">产品落地页 ↗</a>
+        <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank" rel="noopener">GitHub 开源仓库</a>
+        <a class="btn btn-ghost" href="https://yuyuyuuyuyuy.github.io/yaojian/" target="_blank" rel="noopener">产品落地页 ↗</a>
       </div>
     </div>
     <div class="ov-right reveal">
@@ -67,7 +74,6 @@
       </div>
     </div>
   </div>
-  <p class="hero-note reveal">数据全部可查证：17 篇产品文档 + 61 条决策记录 + 金标评测报告均随项目开源</p>
 </section>
 
 <!-- ③ 体验演示 -->
@@ -80,14 +86,14 @@
       <button class="chip" data-q="q1">重金属检查法分几种方法？</button>
       <button class="chip" data-q="q2">药物的降压作用机制是什么？</button>
     </div>
-    <div class="demo-chat" id="demo-chat">
+    <div class="demo-chat" id="demo-chat" aria-live="polite">
       <div class="demo-empty" id="demo-empty">点击上方预置问题，体验「带引用的回答」与「诚实拒答」</div>
     </div>
     <div class="demo-sources" id="demo-sources"></div>
-    <p class="demo-note">演示数据为固定文案（取自金标评测验证过的题目与真实回答）；APP 内为真实检索与流式生成。</p>
+    <p class="demo-note">演示数据为固定文案（取自金标评测验证过的题目与真实回答）；APP 内为真实检索与流式生成。点击回答可立即显示完整内容。</p>
   </div>
 
-  <h3 class="sub-h reveal">核心功能 <span class="sub-h-hint">← 左右滑动浏览，点击卡片查看详情 →</span></h3>
+  <h3 class="sub-h reveal">核心功能 <span class="sub-h-hint">点击卡片查看详情</span></h3>
   <div class="feat-wrap reveal">
     <button class="feat-arrow feat-arrow-l" id="feat-prev" aria-label="上一个">‹</button>
     <div class="feat-grid" id="feat-grid">
@@ -109,7 +115,7 @@
       <div class="slot-label"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="m10.5 9.5 4.5 2.5-4.5 2.5z"/></svg>宣讲视频</div>
       <video class="pf-video" controls preload="metadata">
         <source src="药鉴宣讲视频.mp4" type="video/mp4">
-        你的浏览器不支持视频播放，可前往 <a href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank">GitHub 仓库</a> 了解详情。
+        你的浏览器不支持视频播放，可前往 <a href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank" rel="noopener">GitHub 仓库</a> 了解详情。
       </video>
     </div>
     <div class="media-slot" id="slot-gallery">
@@ -133,6 +139,7 @@
   <h2 class="reveal">0→1 决策故事</h2>
   <p class="sec-sub reveal">我为什么这样做</p>
 
+  <div class="t-all-wrap reveal"><button class="t-all" id="t-all" aria-expanded="false">全部展开</button></div>
   <div class="timeline reveal" id="timeline">
     <div class="t-card">
       <button class="t-head"><span class="t-no">01</span><span class="t-title">起点：在实验室里看见的「信任问题」</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
@@ -193,7 +200,7 @@
     <div class="t-card">
       <button class="t-head"><span class="t-no">08</span><span class="t-title">共修：用真实体验抓自己的 bug</span><span class="t-arrow"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg></span></button>
       <div class="t-body">
-        <p>内部验收（Dogfooding）中，我按验收剧本实测自己的产品，抓出 7 个问题，含 1 个 P0：导入无文字层 PDF 时没有失败提示，会误导用户以为导入成功。发布后我又抓到 3 个隐藏 bug：拒答只回一句不带建议、考点分析对 docx/pdf 失效（读到的是乱码）、笔记接口响应缺状态字段导致选笔记视图必现报错。</p>
+        <p>内部验收（Dogfooding）中，我按验收剧本实测自己的产品，抓出 7 个问题，含 1 个 P0（最高优先级）：导入无文字层 PDF 时没有失败提示，会误导用户以为导入成功。发布后我又抓到 3 个隐藏 bug：拒答只回一句不带建议、考点分析对 docx/pdf 失效（读到的是乱码）、笔记接口响应缺状态字段导致选笔记视图必现报错。</p>
         <p>每一个都做了根因定位（含实验复现）、修复、回归、决策记录四步闭环。第 3 个 bug 也让我立了条规矩：冒烟测试必须验证<b>响应契约</b>，不能只看 HTTP 200。</p>
       </div>
     </div>
@@ -247,11 +254,14 @@
     金标评测连续多轮 <b>25/25 通过、退化 0</b>（引用溯源 / 要点覆盖 / 拒答完整性三关自动评分）。
   </div>
 
-  <h3 class="sub-h reveal">真实用户测试数据</h3>
-  <div class="data-slots reveal">
-    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>北极星：每周有效学习会话</div><div class="ds-body">【数据待回填：S11 测试完成后更新】</div></div>
-    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-2.9-.4-4.1-1L3 20l1-5.3a8.5 8.5 0 1 1 17-3.2z"/></svg>用户反馈与推荐分</div><div class="ds-body">【数据待回填：问卷回收后更新】</div></div>
-    <div class="data-slot"><div class="ds-label"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>PMF 判定结论</div><div class="ds-body">【数据待回填：按判定标准输出 GO / Pivot / 止损】</div></div>
+  <h3 class="sub-h reveal">真实用户测试</h3>
+  <div class="result-note w-narrow reveal">
+    <p><b>验证进行中</b>：H1~H11 假设判定表与 PMF 量化门槛已就绪，S11 真实用户测试按 17 步任务脚本推进中；数据回填后即按判定标准输出 GO / Pivot / 止损。</p>
+    <ul class="vip-list">
+      <li>北极星：每周有效学习会话 —— 待回填</li>
+      <li>用户反馈与推荐分 —— 待回填</li>
+      <li>PMF 判定结论 —— 待回填</li>
+    </ul>
   </div>
 </section>
 
@@ -270,8 +280,8 @@
   <h2 class="reveal">联系我</h2>
   <div class="contact-links reveal">
     <a class="link-chip" id="c-email" href="mailto:18607995476@163.com"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7.5 9 5.5 9-5.5"/></svg>邮箱：18607995476@163.com</a>
-    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub：yuyuyuuyuyuy/yaojian</a>
-    <a class="link-chip" href="个人简历.pdf" target="_blank"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>简历 PDF</a>
+    <a class="link-chip" href="https://github.com/yuyuyuuyuyuy/yaojian" target="_blank" rel="noopener"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub：yuyuyuuyuyuy/yaojian</a>
+    <a class="link-chip" href="个人简历.pdf" target="_blank" rel="noopener"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>简历 PDF</a>
   </div>
   <p class="foot-note reveal">药鉴（YaoJian）· MIT License · 问答内容由大模型基于导入资料生成，正式实验与合规场景请以原始文献/标准原文为准</p>
 </footer>
