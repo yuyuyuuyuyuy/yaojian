@@ -551,16 +551,30 @@ html:active-view-transition .reveal { opacity: 1; transform: none; transition: n
   .proj-card { padding: 24px; }
 }
 
-/* ---------- 18.5 打印样式 ---------- */
+/* ---------- 18.5 打印样式（含 PDF 提交版） ---------- */
+/* 打印专用静态演示块（屏幕隐藏） */
+.print-demo { display: none; }
+.pd-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 16px 20px; margin-bottom: 12px; }
+.pd-q { font-size: var(--fs-body); color: var(--text-2); margin-bottom: 8px; }
+.pd-a { background: #f8f9fb; border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: var(--r-sm) var(--r-md) var(--r-md) var(--r-sm); padding: 16px 20px; font-size: var(--fs-body); color: var(--text); }
+
 @media print {
-  #topnav, .to-top, .t-all-wrap { display: none; }
-  .section { padding: 20px 0; }
+  @page { size: A4; margin: 14mm; }
+  body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  #topnav, .to-top, .t-all-wrap, .hero-cta, .nav-burger { display: none; }
+  .section { padding: 24px 0; }
   .reveal { opacity: 1; transform: none; }
   .t-body { max-height: none; }
-  .m-card { height: auto; }
-  .m-front { display: none; }
-  .m-back { position: static; transform: none; backface-visibility: visible; border-radius: var(--r-md); }
-  .ver-table, .proj-card, .r-card, .demo-box, .result-note, .media-slot { break-inside: avoid; }
+  .t-card { break-inside: avoid; }
+  /* 翻卡：打印时标题+内容上下排列 */
+  .m-card { height: auto; break-inside: avoid; }
+  .m-front { position: static; display: flex; transform: none; backface-visibility: visible; height: auto; border: none; box-shadow: none; }
+  .m-back { position: static; transform: none; backface-visibility: visible; border-radius: var(--r-md); margin-top: 8px; }
+  .ver-table, .proj-card, .r-card, .demo-box, .result-note, .media-slot, .stat, .print-demo { break-inside: avoid; }
+  /* 交互件在 PDF 中静态化：演示区用静态版、功能卡/详情/轮播控件隐藏 */
+  .demo-stage, .feat-wrap, .feat-detail, .flow-detail, .gal-arrow, .gal-dots, .gal-cap { display: none; }
+  .print-demo { display: block; }
+  .gal-frame img { height: auto; max-height: 320px; }
 }
 
 /* ---------- 19. 动效降级（无障碍） ---------- */
